@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<!-- Designed and developed by Business Solution Apps team v -->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"  />
+        <title>UNILEVER</title>
+        
+        <link rel="stylesheet" href="static/my.css"  />
+		
+		<link rel="stylesheet" href="static/themes/c.min.css" />
+		<link rel="stylesheet" href="static/themes/jquery.mobile.icons.min.css" />
+        
+        <link rel="stylesheet" href="static/jquery.mobile-1.4.0/jquery.mobile-1.4.0.min.css" />
+        <script src="static/jquery/1.10.2/jquery-1.10.2.min.js">   </script>
+        <script src="static/jquery.mobile-1.4.0/jquery.mobile-1.4.0.min.js">   </script>
+		<script src="static/survey.js">  </script>
+		
+        
+        <style>
+		/*.ui-content{ background-color:#484848}*/
+				.custom-size-flipswitch.ui-flipswitch .ui-btn.ui-flipswitch-on {
+			text-indent: -5.9em;
+		}
+		.custom-size-flipswitch.ui-flipswitch .ui-flipswitch-off {
+			text-indent: 0.5em;
+		}
+		/* Custom widths are needed because the length of custom labels differs from
+		   the length of the standard labels */
+		.custom-size-flipswitch.ui-flipswitch {
+			width: 8.875em;
+		}
+		.custom-size-flipswitch.ui-flipswitch.ui-flipswitch-active {
+			padding-left: 7em;
+			width: 1.875em;
+		}
+		@media (min-width: 28em) {
+			// Repeated from rule .ui-flipswitch above
+			.ui-field-contain > label + .custom-size-flipswitch.ui-flipswitch {
+				width: 1.875em;
+			}
+		}
+		input[type=number],input[type=text]{ background-color:#F4FFFF;}
+		
+		.full-width-slider input {
+			display: none;
+			
+		}
+		.full-width-slider .ui-slider-track {
+			margin-left: 15px;
+			
+		}
+		
+	
+		</style>
+        <style>
+		.disabledAnchor a{
+		   pointer-events: none !important;
+		   cursor: default;
+		   color:white;
+		}
+		</style>
+        
+   <script>
+<!--
+$(document).ready(function(){
+				//alert (localStorage.saved_req);
+				buttonCheck();
+				$("#login_image").hide();
+				$("#routeS_image").hide();
+				//alert (localStorage.latlongSubmit);
+				
+				$("#lat").val(localStorage.latitude);
+				$("#long").val(localStorage.longitude);
+				//$("#sub_button").hide();
+				buttonCheck();
+				
+				
+				
+				$('#outlet_info_msg').html(localStorage.outletNameID);
+				
+				$("#routeString").html(localStorage.routeString);
+				$("#routeExString").html(localStorage.routeExStringShow);
+				$("#outletString").html(localStorage.outletString);
+				
+				//alert (localStorage.outletExStringShow);
+				$("#outletExString").html(localStorage.outletExStringShow);
+				$("#outletInfo").html(localStorage.outletinfoString);
+				
+				
+				$("#mhskus").html(localStorage.mhskusStringShow);
+				$("#npd").html(localStorage.npdStringShow);
+				$("#fdisplay").html(localStorage.fdisplayStringShow);
+				
+				$("#fdisplayStringShowBefore").html(localStorage.fdisplayStringShowBefore);
+				
+				$("#qpds").html(localStorage.qpdsStringShow);
+				//$("#gift").html(localStorage.giftStringShow);
+				$("#gift").empty();
+				$("#gift").append(localStorage.giftStringShow).trigger('create');
+				//alert (localStorage.giftStringShow);
+				$("#marchadizing").html(localStorage.marchadizingStringShow);
+				
+				$("#startTime").val(localStorage.startTime);
+				$("#endTime").val(localStorage.endTime);
+				
+				
+				$("#marchadizing_add_show").html(localStorage.m_new);
+				
+				
+				
+				$("#outletName_show").html(localStorage.outletNameID);
+				
+				$('#cancel_reason').empty();
+				$('#cancel_reason').append(localStorage.cancel_combo_str);
+				//alert (localStorage.place_combo_str)
+				$('#place_combo_show').empty();
+				$('#place_combo_show').append(localStorage.place_combo_str);
+				
+				
+				
+   				first_page();
+				
+				
+				//alert (localStorage.show_cancel)
+				if (localStorage.show_cancel==0){
+				 cancel_outlet();
+				}
+				if (localStorage.show_cancel==1){
+				 div_change();
+				 $("#outletButton").show();
+				 
+				}
+				if (localStorage.cancel_page==0){
+					$("#next_option").hide();
+					$("#cancel_option").show()
+				}
+				if (localStorage.cancel_page==1){
+					$("#next_option").show();
+					$("#cancel_option").hide()
+				}
+				
+				
+				
+				$("#fdisplay_test").val(localStorage.fdisplayStringShow);
+				
+				$('#outletSyncmsg').html(localStorage.syncinfo);
+				
+				
+				$("#selectItem").html(localStorage.marchadizingItemStringShow);
+				
+				$("#selectBrand").html(localStorage.marchadizingBrandStringShow);
+				
+				
+				//alert (localStorage.m_new);
+				//=======check sync date
+				var sync_date_get=get_date();
+				var sync_y=sync_date_get.split('-')[0];
+				var sync_m=sync_date_get.split('-')[1];
+				if (sync_m.length==1){sync_m='0'+sync_m}
+				var sync_d=sync_date_get.split('-')[2].split(' ')[0];
+				if (sync_d.length==1){sync_d='0'+sync_d}
+				var sync_date=sync_y +'-'+ sync_m +'-'+sync_d;
+				//alert (sync_date);
+				//alert (sync_date);
+				//alert (localStorage.sync_date);
+				//localStorage.sync_date='2014-07-11';
+				
+				//alert (localStorage.synced);
+				
+				if (localStorage.synced=='YES'){
+					$("#cm_id").val(localStorage.cm_id);
+					$("#cm_pass").val(localStorage.cm_pass);
+				}
+				if ((localStorage.synced=='YES') & (localStorage.sync_date!=sync_date)){
+					//alert (localStorage.sync_date);
+					cancel_outlet();
+					
+					localStorage.show_cancel=0;
+								
+					localStorage.m_new_string="";
+					localStorage.m_new="";
+					localStorage.selectedOutlet="";
+					localStorage.outletExStringShow="";
+					localStorage.outletException="";
+					localStorage.outletChanne="";
+					localStorage.outletNameID="";
+					localStorage.mhskusTotal="";
+					
+					localStorage.npdTotal="";
+					localStorage.fdisplaySlabTotal="";
+					localStorage.fdisplayTotal="";
+					localStorage.qpdsSlabTotal="";
+					
+					localStorage.qpdsTotal="";
+					localStorage.giftTotal="";
+					localStorage.marchadizingTotal="";
+					localStorage.mhskus_data_ready="";
+					localStorage.npd_data_ready="";
+					localStorage.fdisplay_data_ready="";
+					localStorage.qpds_data_ready="";
+					localStorage.gift_data_ready="";
+					localStorage.mar_data_ready="";
+					
+					//localStorage.sync_date=sync_date;
+					//localStorage.synced=='YES';
+					
+					
+					//distributon
+					localStorage.mar_distrib_data=""
+					localStorage.merchandisingDistribStr=""
+					localStorage.mar_distrib_stock=""
+					
+					
+					//alert (localStorage.sync_date)
+				//	check_route();
+					var url = "#login";
+					$.mobile.navigate(url);
+					
+				//	location.reload()
+				}
+				//else{
+//					var url = "#index.html";
+//					$.mobile.navigate(url);
+//				}
+				//=====================
+				//alert (localStorage.mhskus_data_ready);
+				
+				
+				//alert ('aaaaaa')
+				shop_page_set();
+				fdisplay_page_set();
+				
+				qpds_page_set();
+				npd_page_set();
+				mhskus_page_set();
+				gift_page_set();
+				place_page_set();
+				keyTaskPage_set();
+				
+				//alert (localStorage.outletIDnameShow)
+				
+				$("#place_outlet_nameID").html(localStorage.outletIDnameShow);
+				$("#cpageOutletNameID").html(localStorage.outletIDnameShow);
+				
+				//alert ("ssssssss");
+				buttonCheck();
+				$("#lat").val(localStorage.latitude);
+				$("#long").val(localStorage.longitude);
+				
+				if (localStorage.saved_visit=='YES'){
+				
+				$("#saved_button").html('<a data-role="button" onClick="savedVisit()" ><img src="saved_visit.png"></a>')
+				
+				}
+				//localStorage.ItemVisiblefdisplay;
+				//alert (localStorage.outletIDnameShow);
+				
+				//alert (localStorage.outletIDnameShow);
+			  //====check div disable====
+			  //fdisplay
+		//	  for (var i=0; i < localStorage.fdisplaySlabTotal-1; i++){
+//				  if (localStorage.fdsl)
+//				 
+//				  //$('#fddiv_'+id).find('input, textarea, button, select').attr('disabled','disabled');
+//			  }
+			  
+			  //================
+  				
+		});
+
+function MM_jumpMenu(targ,selObj,restore){ //v3.0
+  eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+  if (restore) selObj.selectedIndex=0;
+}
+//-->
+</script>	
+  
+    </head>
+    
+
+    <body>  
+    
+ 
+
+     <!--======================Menu page start==================-->        
+        <div data-theme="c" data-role="page" id="menuPage"   >
+       
+           <div data-role="panel" id="routePanel" data-display="overlay" style="width:60%;">
+				<!-- panel content goes here -->
+				<img style="width:100%;"  src="unilogo1.png" alt="UNILEVER" /><br>
+				<font style="color:#007D7D; font-size:25px;">HAWK'S EYE</font><br>
+				<font style="color:#007D7D; font-size:11px;">© Unilever Bangladesh Ltd.</font>
+				<br><br><br>
+				
+				  <ul data-role="listview">
+							
+                    		<div style="background:#008A8A; height:1px"></div>
+							<li id="link_route"><a onClick="check_route()"><img src="visit_plan.png"></a></li>
+                            <div style="background:#008A8A; height:1px"></div>
+                            </br></br></br>
+                            <div style="background:#008A8A; height:1px"></div>
+                            <li><a href="#login" ><img src="sync.png"></a></li>
+                            <div style="background:#008A8A; height:1px"></div>
+							<!--<li><a onClick="clear_autho()" href="#login">Clear Authorization</a></li>
+                            <div style="background:#008A8A; height:1px"></div>-->
+					</ul>
+					<br>
+				<div style="margin:100%;"></div>
+				<img src="logo_gp_p_1.png" alt="Grameen Phone" />
+				
+			</div><!-- /panel -->
+            
+             <div data-theme="c" data-role="header" data-position="fixed" > 
+			
+			    <a style="height:18px"  href="#routePanel" ><img src="unilogo13.png"></a>
+                <a style="height:18px" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right " onClick="exit()" ><img src="exit.png"> </a>
+                <!--<a data-role="button" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-power ui-btn-icon-notext " onClick="exit()" ><img src="exit.png"> </a>-->
+                <h3>Home</h3>
+            </div>
+			
+			<div data-role="content" align="center" style="height:90%" >
+            	<br><br>
+				
+				<font color="#CCFFCC" face="Arial, Helvetica, sans-serif" size="-1">       
+			   <a data-role="button" onClick="marketPJP_check()" ><img src="market_pjp.png"></a>
+			   
+               <a data-role="button" onClick="savedVisit()" ><img src="saved_visit.png"></a>
+               <!--<div id="saved_button">--><!--'</div>-->
+               <a data-role="button" href="#noticePage" onClick="test()" ><img src="notice_icon.png"></a>
+				
+                </font>
+            </div>
+        </div>
+    
+    
+     <!--======================Menu page end==================-->   
+    
+    
+      <!--  ================= login page=================  -->
+        
+        <div data-theme="c" data-role="page" id="login"   >
+            <div data-theme="c" data-role="header" data-position="fixed" >
+			
+			   <a style=" height:18px"   onClick="munu_page_check()"  class="ui-btn-left ui-btn-icon-notext"><img src="unilogo13.png"></a>
+               <a data-role="button" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-power ui-btn-icon-notext " onClick="exit()" >Exit </a>
+                <h3>Login</h3>
+            </div>
+			
+			<div data-role="content" style="height:90%" >    
+               
+				<font color="#CCFFCC" face="Arial, Helvetica, sans-serif" size="-1"> 
+                </br></br>
+                             
+				<input type="text" name="cm_id" id="cm_id" placeholder="CM ID" value="">
+				<input type="number" name="cm_pass" id="cm_pass" placeholder="CM Pass" value="">
+                </font>                
+				</br></br>	
+				
+                
+                <div id="login_image" ><img height="40px" width="40px" src="loading.gif"></div>
+                <a id="loginButton" data-role="button"  onClick="check_user()" >Login</a>		
+                
+                </br></br></br></br>
+                
+                <!-- <a id="loginButton" data-role="button"  onClick="clear_autho()" >Clear Authorization</a>-->			
+				<div id="error_login" style="color:#006291"></div>
+				
+					   
+            </div>
+			
+		
+			<div align="right"  style="color:#A4C5D9; width:100%; ">Version:00010;20160117.1</div>
+        </div><!--/login page-->
+   
+     <!--  ====================== routePage ======================  -->
+		<div data-theme="c" data-role="page" id="routePage">
+			<div data-theme="c" data-role="header" data-position="fixed" >
+			    <a style=" height:18px"   onClick="munu_page_check()"  class="ui-btn-left ui-btn-icon-notext"><img src="unilogo13.png"></a>
+                <a style="height:18px" data-rel="back" data-iconpos="left" class="ui-btn-right"><img src="back1.png"></a>
+                <h3>Select Route</h3>
+            </div>
+			<div  data-role="content" style="height:90%" >		
+             <span style=" font-size:5"> <br/><br/></span>				
+						<div id="routeString"> </div>
+			
+				<br/><br/>	
+                
+                <div id="routeS_image" ><img height="40px" width="40px" src="loading.gif"></div>				
+				<a id="RSButton" data-role="button" onClick="marketPJP();" >Sync Route</a>
+				
+                <div id="dataerror" style="color:#006291" > </div>
+                <br/><br/>
+
+                <br/><br/><br/>
+								
+			</div>
+		 
+		</div><!-- /route page -->
+		
+      
+    
+    <!--====================Route Exception==================-->
+    <div data-theme="c" data-role="page" id="routeexceptionPage">
+		    <div data-theme="c" data-role="header" data-position="fixed" >
+			    <a style="height:18px" onClick="munu_page_check()"  class="ui-btn-left ui-btn-icon-notext"><img src="unilogo13.png"></a>
+                <a style="height:18px" data-rel="back" data-iconpos="left" class="ui-btn-right"><img src="back1.png"></a>
+                <h3>Route Exception</h3>
+            </div>
+		    
+			<div  data-role="content" style="height:90%" >	
+             <span style=" font-size:5"> <br/><br/></span>				
+			Select Cause:
+              		<div id="routeExString"> </div>		
+			
+				<br/><br/>
+
+				<a data-role="button"  onClick="selectRouteException()" >Confirm Route Exception</a>
+
+                <div id="dataerrorRoute" style="color:#006291"> </div>
+                <br/><br/>
+
+                <br/><br/><br/>
+								
+			</div>
+		 
+		</div><!-- /route page -->
+        
+        <!--=====================Route exception page end=============-->
+    
+    <!--  ===================    outletPage ========================  -->
+		<div data-theme="c" data-role="page" id="outletPage">
+			
+			<div data-theme="c" data-role="header" data-position="fixed" >
+			    <a id="menujpj" style="height:18px"   onClick="munu_page_check()"  class="ui-btn-left ui-btn-icon-notext"><img src="unilogo13.png"></a>
+                <a id="backjpj" style="height:18px" data-rel="back" data-iconpos="left" class="ui-btn-right"><img src="back1.png"></a>
+               <!-- <a id="backjpj" data-role="button" data-rel="back" data-icon="arrow-l" data-iconpos="left" class="ui-btn-right">Back</a>-->
+                <h3>Select Outlet</h3>
+            </div>
+		    
+			<div  data-role="content" style="height:90%" >  
+            <span style=" font-size:5"> <br/><br/></span>
+                
+                <div id="outletString"> </div>	
+
+
+                <div id="outletCancel" style="display:none"> 
+                Work in progress:
+                		<div  style="color:#006A6A; font-size:18px;" id="outletName_show"></div>
+                		
+						<div id="outletWait" style="display:none">
+                        <img height="40px" width="40px" src="loading.gif">
+                        </div>
+                        <div id="outletButton" style="display:none" >
+						<a data-role="button" onClick="getlocationand_askhelp();cancel_outlet_next()" >Cancel</a>
+                        <a data-role="button" onClick="cancel_outlet_next_next();" >Next</a>
+						</div>
+						
+                </div>	
+				<div id="outletInfo1"></div>	
+                <!--<br/><br/>
+				<a data-role="button" onClick="div_change();select_outlet();" >Next</a>-->
+                
+                <div id="dataerrorOutlet" style="color:#006291"> </div>
+                <br/><br/>
+
+                <br/><br/><br/>
+								
+			</div>
+		   
+		</div><!-- /outlet page -->
+		
+    
+    <!--=========================outlet page end================== -->
+     <!--====================Outlet Exception==================-->
+     
+    <div data-theme="c" data-role="page" id="outletexceptionPage">	
+		   <div data-theme="c" data-role="header" data-position="fixed" >
+			    <a style="height:18px" onClick="munu_page_check()"  class="ui-btn-left ui-btn-icon-notext"><img src="unilogo13.png"></a>
+                <a style="height:18px" data-rel="back" data-iconpos="left" class="ui-btn-right"><img src="back1.png"></a>
+                <h3>Outlet Exception</h3>
+            </div>
+		    
+			<div  data-role="content" style="height:90%" > 
+                <div id="outletInfo"> </div>
+				
+                </br>
+                
+                Select Cause:
+              		
+                    
+                    
+                    
+                    <div id="outletExString"> </div>
+               				
+				<br/><br/>
+				<a data-role="button" onClick="selectOutletException();" >Next</a>
+
+                <div id="dataerror" style="color:#FF0; font-family:Arial, Helvetica, sans-serif; text-decoration:none; font-size:12px; font-style:normal; font-weight:lighter; text-shadow:none"  align="center"> </div>
+                <br/><br/>
+
+                <br/><br/><br/>
+								
+	  </div>
+		   
+	</div><!-- /route page -->
+        
+        <!--=====================uotlet exception page end=============-->
+     <!--====================Outlet syncing==================-->
+     
+    <div data-theme="c" data-role="page" id="outletSyncingPage">	
+		   <div data-theme="c" data-role="header" data-position="fixed" >
+			    <a style=" height:18px" onClick="munu_page_check()"  class="ui-btn-left ui-btn-icon-notext"><img src="unilogo13.png"></a>
+                <a style="height:18px" data-rel="back" data-iconpos="left" class="ui-btn-right"><img src="back1.png"></a>
+                <h3>Outlet Info</h3>
+            </div>
+		    
+			<div  data-role="content" style="height:90%" > 
+                <div id="syncInfo"> </div>
+				
+                </br>
+             <div id="outletSyncmsg">  
+              
+                    
+               </div>
+                    
+           		<div id="outletOk">  
+                  <a data-role="button"  onClick="reloadPages()">OK</a>
+                    
+                  </div>
+                   
+					
+               				
+				<br/><br/>
+				
+
+                <div id="dataerror" style="color:#FF0; font-family:Arial, Helvetica, sans-serif; text-decoration:none; font-size:12px; font-style:normal; font-weight:lighter; text-shadow:none"  align="center"> </div>
+                <br/><br/>
+
+                <br/><br/><br/>
+								
+	  </div>
+		   
+	</div><!-- /route page -->
+        
+        <!--=====================Outlet syncing page end=============-->
+    
+   <!-- ============================MH SKUS page Start============================-->
+    
+    <div data-theme="c" data-role="page" id="mhskusPage">	
+		  <div data-theme="c" data-role="header" data-position="fixed" >
+			    <a style="height:18px" onClick="munu_page_check()"  class="ui-btn-left ui-btn-icon-notext"><img src="unilogo13.png"></a>
+                <a style="height:18px" data-rel="back" data-iconpos="left" class="ui-btn-right"><img src="back1.png"></a>
+                <h3>Must Have SKUS</h3>
+            </div>
+			<div  data-role="content" style="height:90%" >
+            
+
+				<div id="mhskus"></div>
+                <input name="startTime" id="startTime"  value="" type="hidden">
+                <!--<div id="mhskus1"></div>-->
+                </br></br>
+				<a data-role="button"  onClick="mhskus_ready_data()" >Next</a>
+				<br/><br/></br></br></br></br></br></br><br/><br/><br/>
+              <div id="dataerror" style="color:#FF0; font-family:Arial, Helvetica, sans-serif; text-decoration:none; font-size:12px; font-style:normal; font-weight:lighter; text-shadow:none"  align="center"> </div>
+                <br/><br/>
+                
+	  </div>
+
+	</div>
+        
+    <!--=====================MH SKUS page end=========================-->
+    
+
+
+	</div>
+        
+     <!--=====================Marchandizing page end=============-->
+    <!-- ============================NPD page Start============================-->
+    
+    <div data-theme="c" data-role="page" id="npdPage">
+		   <div data-theme="c" data-role="header" data-position="fixed" >
+			    <a style="height:18px" onClick="munu_page_check()"  class="ui-btn-left ui-btn-icon-notext"><img src="unilogo13.png"></a>
+                <a style="height:18px" data-rel="back" data-iconpos="left" class="ui-btn-right"><img src="back1.png"></a>
+                <h3>NPD</h3>
+            </div>
+		    
+			<div  data-role="content" style="height:90%" >
+           		
+				<div id="npd"></div>
+				
+				</br></br>
+				<!--<a data-role="button" href="#fixedDisplay" onClick="npd_ready_data()" >Next</a>-->
+                
+                <a data-role="button" onClick="npd_ready_data()" >Next</a>
+				<br/><br/></br></br></br></br></br></br><br/><br/><br/>
+              <div id="dataerror" style="color:#FF0; font-family:Arial, Helvetica, sans-serif; text-decoration:none; font-size:12px; font-style:normal; font-weight:lighter; text-shadow:none"  align="center"> </div>
+                <br/><br/>
+
+                <br/><br/><br/>
+								
+	  </div>
+		   
+	</div>
+        
+    <!--=====================NPD page end=========================-->
+    
+     <!-- ============================Fixed Display page Start============================-->
+    
+    <div data-theme="c" data-role="page" id="fixedDisplay">
+		   <div data-theme="c" data-role="header" data-position="fixed" >
+			    <a style="height:18px" onClick="munu_page_check()"  class="ui-btn-left ui-btn-icon-notext"><img src="unilogo13.png"></a>
+                <a style="height:18px" data-rel="back" data-iconpos="left" class="ui-btn-right" ><img src="back1.png"></a>
+                <h3>Fixed Display Audit</h3>
+            </div>
+		    
+			<div  data-role="content" style="height:90%" >
+
+            <!--<div id="fdisplay_show"></div>-->
+	
+    		<div id="fdisplay"></div>
+    
+    			
+
+                
+                 <input name="fdisplay_test" id="fdisplay_test" placesholder="" value="" type="hidden">
+				 
+				 
+				 </br></br>
+				<!--<a data-role="button" href="#qpdsPage" onClick="fdisplay_ready_data();" >Next</a>-->
+              <!--  brand_ready_data();-->
+                <a data-role="button" onClick="fdisplay_ready_data();" >Next</a>
+				<br/><br/></br></br></br></br></br></br><br/><br/><br/>
+              <div id="dataerror" style="color:#FF0; font-family:Arial, Helvetica, sans-serif; text-decoration:none; font-size:12px; font-style:normal; font-weight:lighter; text-shadow:none"  align="center"> </div>
+                <br/><br/>
+                <br/><br/><br/>
+	  </div>
+		
+	</div>
+        
+    <!--=====================fixed display page end=========================-->
+    
+    <!-- ============================QPDS  page Start============================-->
+    
+    <div data-theme="c" data-role="page" id="qpdsPage">
+		<div data-theme="c" data-role="header" data-position="fixed" >
+			    <a style="height:18px" onClick="munu_page_check()"  class="ui-btn-left ui-btn-icon-notext"><img src="unilogo13.png"></a>
+                <a style="height:18px" data-rel="back" data-iconpos="left" class="ui-btn-right"><img src="back1.png"></a>
+                <h3>Promotion</h3>
+            </div>
+		    
+			<div  data-role="content" style="height:90%" >
+            
+          
+            <div id="qpds"></div>
+
+			
+				</br></br>
+
+		
+                <a data-role="button" onClick="qpds_ready_data();" >Next</a>
+				<br/><br/></br></br></br></br></br></br><br/><br/><br/>
+				
+              <div id="dataerror" style="color:#FF0; font-family:Arial, Helvetica, sans-serif; text-decoration:none; font-size:12px; font-style:normal; font-weight:lighter; text-shadow:none"  align="center"> </div>
+                <br/><br/>
+
+                <br/><br/><br/>
+								
+	  </div>
+
+	</div>
+        
+    <!--=====================QPDS  page end=========================-->
+	
+	
+	   
+  
+
+     <!-- ============================Gift Acknowledgement page Start============================-->
+    
+    <div data-theme="c" data-role="page" id="giftAckPage">
+		    <div data-theme="c" data-role="header" data-position="fixed" >
+			    <a style="height:18px" onClick="munu_page_check()"  class="ui-btn-left ui-btn-icon-notext"><img src="unilogo13.png"></a>
+                <a style="height:18px" data-rel="back" data-iconpos="left" class="ui-btn-right"><img src="back1.png"></a>
+                <h3>Gift </h3>
+            </div>
+		    
+			<div  data-role="content" style="height:90%" >
+            
+            
+           
+            <div id="gift">
+			  	
+			
+			</div>
+      
+			
+
+			</br></br>
+			<a  data-role="button" onClick="gift_ready_data();" >Next</a>
+			<br/><br/></br></br></br></br></br></br><br/><br/><br/>
+              <div id="dataerror" style="color:#FF0; font-family:Arial, Helvetica, sans-serif; text-decoration:none; font-size:12px; font-style:normal; font-weight:lighter; text-shadow:none"  align="center"> </div>
+               
+               <!--<div id="submit_data"></div>-->
+               
+               
+                <br/><br/>
+                <br/><br/><br/>
+	  </div>
+
+	</div>
+        
+    <!--=====================GA page end=========================-->
+		
+     <!-- ============================wait page Start============================-->
+    
+    <div data-theme="c" data-role="page" id="submitPage">
+		    <div data-theme="c" data-role="header" data-position="fixed" >
+			    <a style="height:18px"   onClick="munu_page_check()"  class="ui-btn-left ui-btn-icon-notext"><img src="unilogo13.png"></a>
+                <a style="height:18px" data-rel="back" data-iconpos="left" class="ui-btn-right"><img src="back1.png"></a>
+                <h3>Submit</h3>
+            </div>
+		    
+			<div  data-role="content" style="height:90%" >
+                <div id="outlet_info_msg"   style="color:#006A6A; font-size:18px;"> </div>
+                </br>
+                </br>
+				Location:
+				<input name="lat" id="lat" placesholder="" value="" type="text" readonly>
+			   <input name="long" id="long" placeholder="" value="" type="text" readonly>
+				
+			<div id="location_button">
+			<a data-role="button" onClick="getlocationand_askhelp();">Confirm Location</a>
+			</div>
+            
+			<div id="sub_button_div">
+        	<a  data-role="button" onClick="submit_data();" >Submit Data</a>
+			</div> 
+			
+
+			<div id="image_up_button">
+        	<a   data-role="button" onClick="check_step();" >Complete Submission</a>			
+			</div>
+			<div id="NOutlet_button">
+        	<a  data-role="button" onClick="cancel_outlet();menupage();" >Select New Outlet</a>
+			</div>
+			  
+            
+            <div id="submit_data" style="color:#006291"></div>
+            <div id="submit_data_check" style="color:#006291"></div>
+            <!--<div id="submit_msg">
+				Please Wait Submitting Data............
+			</div>-->
+			
+              <div id="dataerror" style="color:#FF0; font-family:Arial, Helvetica, sans-serif; text-decoration:none; font-size:12px; font-style:normal; font-weight:lighter; text-shadow:none"  align="center"> </div>
+                <br/><br/>
+                <br/><br/><br/>
+	  </div>
+
+	</div>
+        
+    <!--=====================wait page end=========================-->  
+    
+    
+  
+              
+    <!--===========================dialog marchandizing start=============-->
+       
+<div data-theme="c" data-role="page" data-dialog="true" id="dialogMarchandizing">
+
+  <div data-role="header">
+    <h1>New Merchandising</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    
+    <table id="newMarchandizing_1"  width="100%" border="0" >
+                  <tr >
+                    
+                    <td >
+                    <div id="selectItem">
+                    
+
+                        
+                         </div>
+                        
+                        </td>
+                  </tr>
+                  
+ 
+                  
+                  
+                 
+                  <tr >
+                    
+                    <td>
+                    <div id="selectBrand">
+                 
+                        </div>
+                    </td>
+                  </tr>
+                  <tr >
+                   
+                    <td><input type="number" name="mar_qty_add" id="mar_qty_add" value="" placeholder="Qty"></td>
+                  </tr>
+                  <tr >
+                    
+                    <td><input type="date" name="mar_date_add" id="mar_date_add" value=""  ></td>
+                  </tr>
+            
+              
+                  <tr >
+                    
+                    <td><a  data-role="button" href="#marchandizingPage" onClick="marchandizing_add()" >Add</a></td>
+                  </tr>
+                  
+                   <tr >
+                   
+                    <td></td>
+                  </tr>
+                  
+                  
+                </table>
+    
+    
+    
+  </div>
+
+
+</div> 
+ <!--===========================dialog marchandizing end=============-->
+ 
+ 
+ 
+   <!-- ============================notice page Start============================-->
+    
+    <div data-theme="c" data-role="page" id="noticePage">
+		    <div data-theme="c" data-role="header" data-position="fixed" >
+			    <a style="height:18px" onClick="munu_page_check()"  class="ui-btn-left ui-btn-icon-notext"><img src="unilogo13.png"></a>
+                <a style="height:18px" data-rel="back" data-iconpos="left" class="ui-btn-right"><img src="back1.png"></a>
+                <h3>Notice</h3>
+            </div>
+		    
+			<div  data-role="content" style="height:90%" >
+            
+            
+            
+           <!-- <div id="notice">Notice</div>-->
+      
+			
+
+		
+               
+               <!--<div id="submit_data"></div>-->
+               
+               
+                <br/><br/>
+                <br/><br/><br/>
+	  </div>
+
+	</div>
+        
+    <!--=====================notice page end=========================-->
+ <!-- ============================cancel  page Start============================-->
+    
+    <div data-theme="c" data-role="page" id="cancelPage">
+		<div data-theme="c" data-role="header" data-position="fixed" >
+			    <a style="height:18px" onClick="munu_page_check()"  class="ui-btn-left ui-btn-icon-notext"><img src="unilogo13.png"></a>
+                <a style="height:18px" data-rel="back" data-iconpos="left" class="ui-btn-right"><img src="back1.png"></a>
+                <h3>Outlet</h3>
+            </div>
+		    
+			<div  data-role="content" style="height:90%" >
+            
+          
+           
+		 
+		  
+		  <div id="cpageOutletNameID"> </div>
+		  
+		 
+		  
+		  	 <div id="shop_show">
+				  <table width="100%" border="0"><tr>
+					  <tr>
+						<td><a data-role="button" href="#" onClick="get_pic_shop()" >Take Picture </a></td></tr>
+					</table>
+					<img id="shop_image_div" height="100px" width="100px"  src="" alt="Place" />
+						<input type="hidden" name="shop_image_div_hidden" id="shop_image_div_hidden" value="" >
+						<input type="hidden" name="shop_image_name_hidden" id="shop_image_name_hidden" value="" >
+					</div> <!--shop_show-->			
+						</br></br>
+					<div id="cancel_option">	
+						<div id="c_reason"></div>
+						Cancel Reason:
+						<div id="cancel_reason">
+						  <!--<select name="cancel_cause" id="cancel_cause" >
+							<option value=""></option>
+							<option value="Will try later">Will try later</option>
+							<option value="Outlet is closed">Outlet is closed</option>
+							<option value="Outlet renovation">Outlet renovation</option>
+							<option value="Owner is reluctant">Owner is reluctant</option>
+							<option value="Owner not available with shop picture">Owner not available with shop picture</option>
+						  </select>-->
+						  </div> <!--cancel_reason-->
+						</br>
+				
+				
+				
+                <a data-role="button" onClick="cancel_outlet_Back();" >End</a>				
+				</div> <!--cancel_option-->
+				
+				
+				
+				
+				<div id="next_option">
+				<!--<a data-role="button" onClick="outlet_next_page();getlocationand_askhelp();" >Next</a>-->
+                
+                					<!--2017/11/16 Thursday Start-->
+                
+				<a data-role="button" onClick="outlet_next_page();getlocationand_askhelp();" >Next</a>
+                					
+                                    <!--2017/11/16 Thursday End-->
+            <!--    <a data-role="button" onClick="outlet_next_page()" >Next</a>-->
+				</div>
+				<br/><br/></br></br></br></br></br></br><br/><br/><br/>
+				
+              <div id="dataerror" style="color:#FF0; font-family:Arial, Helvetica, sans-serif; text-decoration:none; font-size:12px; font-style:normal; font-weight:lighter; text-shadow:none"  align="center"> </div>
+                <br/><br/>
+
+                <br/><br/><br/>
+								
+	  </div>
+
+	</div>
+        
+    <!--=====================cancel  page end=========================-->	
+	 <!-- ============================fd before pic  page Start============================-->
+    
+    <div data-theme="c" data-role="page" id="fdbeforePage">
+		<div data-theme="c" data-role="header" data-position="fixed" >
+			    <a style="height:18px" onClick="munu_page_check()"  class="ui-btn-left ui-btn-icon-notext"><img src="unilogo13.png"></a>
+                <a style="height:18px" data-rel="back" data-iconpos="left" class="ui-btn-right"><img src="back1.png"></a>
+                <h3>Fixed Display Before Image</h3>
+            </div>
+		    
+			<div  data-role="content" style="height:90%" >
+            
+          
+           </br>
+		   
+		 	<div id="fdisplayStringShowBefore"></div>
+			
+				</br></br>
+
+			
+                <a data-role="button" onClick="fdisplay_ready_data();fdisplay_before_page_next()" >Next</a>
+				<br/><br/></br></br></br></br></br></br><br/><br/><br/>
+				
+              <div id="dataerror" style="color:#FF0; font-family:Arial, Helvetica, sans-serif; text-decoration:none; font-size:12px; font-style:normal; font-weight:lighter; text-shadow:none"  align="center"> </div>
+                <br/><br/>
+
+                <br/><br/><br/>
+								
+	  </div>
+
+	</div>
+        
+    <!--=====================fd before pic  page end=========================-->		
+   <!-- ============================Place  page Start============================-->
+    
+    <div data-theme="c" data-role="page" id="placePage">
+		<div data-theme="c" data-role="header" data-position="fixed" >
+			    <a style="height:18px" onClick="munu_page_check()"  class="ui-btn-left ui-btn-icon-notext"><img src="unilogo13.png"></a>
+                <a style="height:18px" data-rel="back" data-iconpos="left" class="ui-btn-right"><img src="back1.png"></a>
+                <h3>Place</h3>
+            </div>
+		    
+			<div  data-role="content" style="height:90%" >
+            
+          
+           <div id="place_outlet_nameID"></div>
+		   </br></br>
+		  <div id="place_show" >
+		  <table width="100%" border="0"><tr>
+			  <tr>
+				<td><a data-role="button"  onClick="get_pic_place()" >Take Picture </a></td></tr>
+			</table>
+			<img id="place_image_div" height="100px" width="100px"  src="" alt="Place" />
+				<input type="hidden" name="place_image_div_hidden" id="place_image_div_hidden" value="" >
+				<input type="hidden" name="place_image_name_hidden" id="place_image_name_hidden" value="" >
+				
+				
+				<div id="place_combo_show"></div>
+			  
+			</div>
+				
+							
+			
+				</br></br>
+
+			
+                <a data-role="button" onClick="place_ready_data();" >Next</a>
+				<br/><br/></br></br></br></br></br></br><br/><br/><br/>
+				
+              <div id="dataerror" style="color:#FF0; font-family:Arial, Helvetica, sans-serif; text-decoration:none; font-size:12px; font-style:normal; font-weight:lighter; text-shadow:none"  align="center"> </div>
+                <br/><br/>
+
+                <br/><br/><br/>
+								
+	  </div>
+
+	</div>
+        
+    <!--=====================Place  page end=========================-->
+ 
+ 
+ 
+   <!-- ============================Key Task  page Start============================-->
+    
+    <div data-theme="c" data-role="page" id="keyTaskPage">
+		<div data-theme="c" data-role="header" data-position="fixed" >
+			    <a style="height:18px" onClick="munu_page_check()"  class="ui-btn-left ui-btn-icon-notext"><img src="unilogo13.png"></a>
+                <a style="height:18px" data-rel="back" data-iconpos="left" class="ui-btn-right"><img src="back1.png"></a>
+<!--                <h3>KeyTask</h3> 	-->
+                <h3>Self Check List </h3>
+            </div>
+		    
+			<div  data-role="content" style="height:90%" >
+            
+          
+           <div id="place_outlet_nameID"></div>
+		   </br></br>
+		  <div id="place_show" >
+				Key Tasks Performed:
+				<label><input type="checkbox" name="planKey" id="planKey" value=""/>Plan o gram maintenance</label>	
+				<label ><input type="checkbox" name="productKey" id="productKey" value=""/>Product cleaning</label>
+				<label  ><input type="checkbox" name="posmKey" id="posmKey" value=""/>POSM execution</label>	
+				<label  ><input type="checkbox" name="catKey" id="catKey" value=""/>Category Shelf management</label>	
+			  
+			</div>
+				
+							
+			
+				</br></br>
+
+			
+                <a data-role="button" onClick="task_ready_data();" >Next</a>
+				<br/><br/></br></br></br></br></br></br><br/><br/><br/>
+				
+              <div id="dataerror" style="color:#FF0; font-family:Arial, Helvetica, sans-serif; text-decoration:none; font-size:12px; font-style:normal; font-weight:lighter; text-shadow:none"  align="center"> </div>
+                <br/><br/>
+
+                <br/><br/><br/>
+								
+	  </div>
+
+	</div>
+        
+    <!--=====================Key Task page end=========================-->
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+<!-- ============Saved visit Page Start================-->
+    <div data-theme="c" data-role="page" id="savedVisitPage">
+		    <div data-theme="c" data-role="header" data-position="fixed" >
+			    <a style="height:18px" onClick="munu_page_check()"  class="ui-btn-left ui-btn-icon-notext"><img src="unilogo13.png"></a>
+                <a style="height:18px" data-rel="back" data-iconpos="left" class="ui-btn-right"><img src="back1.png"></a>
+                <h3>Saved Visit</h3>
+            </div>
+		    
+			<div  data-role="content" style="height:90%" >	
+             <span style=" font-size:5"> <br/><br/></span>				
+					<div id="savedVisitRecordError"> </div>	
+                    <div id="login_image_saved" ><img height="40px" width="40px" src="loading.gif"></div>
+              		<div id="savedVisitRecord"> </div>		
+			
+				<br/><br/>
+
+				
+
+                <div id="dataerrorsave" style="color:#006291"> </div>
+                <br/><br/>
+
+                <br/><br/><br/>
+								
+			</div>
+		 
+		</div><!-- /route page -->
+        
+<!--=====================Saved visit Page end=============-->
+ 
+ <script type="text/javascript" src="phonegap.js"></script>
+ 
+ 
+ 
+    </body>
+</html>
