@@ -11,7 +11,7 @@
 
 
 var apipath='http://w02.yeapps.com/unibazar/syncmobile_schedule_eon/';
-var apipath_image = 'http://w02.yeapps.com/unilever18/';
+var apipath_image = 'http://w02.yeapps.com/unibazar/';
 
 
 
