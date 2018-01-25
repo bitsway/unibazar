@@ -2406,9 +2406,9 @@ function sf_ready_data() {
 	localStorage.sf_data=sf_data
 	
 	var errorFlag=true
-//	if (sf_image_path!=''){
-//		errorFlag=false
-//	}
+	if (sf_image_path!=''){
+		errorFlag=false
+	}
 	
 	if (errorFlag==false){
 	//Local
