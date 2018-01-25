@@ -3536,7 +3536,7 @@ function upload_fd(){
 		
 	}
 	//upload_qpds();
-
+	upload_sf()
 }
 
 function upload_qpds(){
