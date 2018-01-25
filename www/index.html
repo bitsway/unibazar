@@ -73,7 +73,7 @@ $(document).ready(function(){
 				$("#lat").val(localStorage.latitude);
 				$("#long").val(localStorage.longitude);
 				//$("#sub_button").hide();
-				buttonCheck();
+				//buttonCheck();
 				
 				
 				
@@ -90,12 +90,14 @@ $(document).ready(function(){
 //				
 //				
 //				$("#mhskus").html(localStorage.mhskusStringShow);
-				$("#npd").html(localStorage.npdStringShow);
+				//$("#npd").html(localStorage.npdStringShow);
 				$("#fdisplay").html(localStorage.fdisplayStringShow);
+				
+				$("#fdLoad_image").hide()
 //				
 //				$("#fdisplayStringShowBefore").html(localStorage.fdisplayStringShowBefore);
 				
-				$("#qpds").html(localStorage.qpdsStringShow);
+			//	$("#qpds").html(localStorage.qpdsStringShow);
 			//	alert (localStorage.qpdsStringShow)
 //				//$("#gift").html(localStorage.giftStringShow);
 //				$("#gift").empty();
@@ -149,9 +151,9 @@ $(document).ready(function(){
 				$('#outletSyncmsg').html(localStorage.syncinfo);
 				
 				
-				$("#selectItem").html(localStorage.marchadizingItemStringShow);
+				//$("#selectItem").html(localStorage.marchadizingItemStringShow);
 				
-				$("#selectBrand").html(localStorage.marchadizingBrandStringShow);
+				//$("#selectBrand").html(localStorage.marchadizingBrandStringShow);
 				
 				
 				//alert (localStorage.m_new);
@@ -187,31 +189,31 @@ $(document).ready(function(){
 					localStorage.outletException="";
 					localStorage.outletChanne="";
 					localStorage.outletNameID="";
-					localStorage.mhskusTotal="";
+					//localStorage.mhskusTotal="";
 					
-					localStorage.npdTotal="";
+					//localStorage.npdTotal="";
 					localStorage.fdisplaySlabTotal="";
 					localStorage.fdisplayTotal="";
-					localStorage.qpdsSlabTotal="";
+				//	localStorage.qpdsSlabTotal="";
 					
-					localStorage.qpdsTotal="";
-					localStorage.giftTotal="";
-					localStorage.marchadizingTotal="";
-					localStorage.mhskus_data_ready="";
-					localStorage.npd_data_ready="";
+					//localStorage.qpdsTotal="";
+//					localStorage.giftTotal="";
+//					localStorage.marchadizingTotal="";
+//					localStorage.mhskus_data_ready="";
+//					localStorage.npd_data_ready="";
 					localStorage.fdisplay_data_ready="";
-					localStorage.qpds_data_ready="";
-					localStorage.gift_data_ready="";
-					localStorage.mar_data_ready="";
+					//localStorage.qpds_data_ready="";
+//					localStorage.gift_data_ready="";
+//					localStorage.mar_data_ready="";
 					
 					//localStorage.sync_date=sync_date;
 					//localStorage.synced=='YES';
 					
 					
 					//distributon
-					localStorage.mar_distrib_data=""
-					localStorage.merchandisingDistribStr=""
-					localStorage.mar_distrib_stock=""
+				//	localStorage.mar_distrib_data=""
+				//	localStorage.merchandisingDistribStr=""
+				//	localStorage.mar_distrib_stock=""
 					
 					
 					//alert (localStorage.sync_date)
@@ -284,7 +286,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
            <div data-role="panel" id="routePanel" data-display="overlay" style="width:60%;">
 				<!-- panel content goes here -->
 				<img style="width:100%;"  src="unilogo1.png" alt="UNILEVER" /><br>
-				<font style="color:#007D7D; font-size:25px;">HAWK'S EYE</font><br>
+				<font style="color:#007D7D; font-size:25px;">UniBazar</font><br>
 				<font style="color:#007D7D; font-size:11px;">© Unilever Bangladesh Ltd.</font>
 				<br><br><br>
 				
@@ -1014,7 +1016,10 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 			<div  data-role="content" style="height:90%" >
 
             <!--<div id="fdisplay_show"></div>-->
-	
+			
+            <br>
+            
+            <div id="fdLoad_image" ><img height="40px" width="40px" src="loading.gif"></div>
     		<div id="fdisplay"></div>
     
     			

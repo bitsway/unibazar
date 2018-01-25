@@ -605,7 +605,7 @@ function check_user() {
 		localStorage.outletString='';
 	//	clear_autho();
    		
-	alert (apipath+'check_user?cid='+localStorage.cid+'&cm_id='+localStorage.cm_id+'&cm_pass='+localStorage.cm_pass+'&synccode='+localStorage.synccode)
+	//alert (apipath+'check_user?cid='+localStorage.cid+'&cm_id='+localStorage.cm_id+'&cm_pass='+localStorage.cm_pass+'&synccode='+localStorage.synccode)
 	//$("#error_login").html(apipath+'check_user?cid='+localStorage.cid+'&cm_id='+localStorage.cm_id+'&cm_pass='+localStorage.cm_pass+'&synccode='+localStorage.synccode);	
    		$.ajax({
 				 type: 'POST',
@@ -1439,6 +1439,7 @@ HairCareStr=HairCareStr+HairCare_image_path4+'fdfd'+HairCare_image_name4+'fdfd'+
 //		if (errorFlag == false){
 			var url = "#fixedDisplay";
 			$.mobile.navigate(url);
+			
 		
 		}
 		
@@ -1728,6 +1729,7 @@ function Cat_page_set() {
 
 function syncOutlet() { 
 	result_string=localStorage.selected_outletinfo_all_final;
+	$("#fdLoad_image").show()
 	
 	//alert (apipath+'sync_outlet?cid='+localStorage.cid+'&cm_id='+localStorage.cm_id+'&cm_pass='+localStorage.cm_pass+'&synccode='+localStorage.synccode+'&outlet='+localStorage.outletNameID);
 	$.ajax({
@@ -1749,6 +1751,8 @@ function syncOutlet() {
 					var result_string=resultArray[1];
 					
 			if (result_string.length > 50){
+			
+			
 			var npdArray = result_string.split('</npdList>');									
 			npdList = npdArray[0].split("<npdList>")[1];
 			//alert (npdList)
@@ -1912,7 +1916,10 @@ function syncOutlet() {
 			
 			localStorage.fdisplayStringShow=fdisplayStringShow
 			$("#fdisplay").html(localStorage.fdisplayStringShow);
-
+			
+			$("#fdLoad_image").hide()
+			
+			
 
 			//==========Create QPDS Display list
 		
@@ -2002,7 +2009,8 @@ function syncOutlet() {
 			//===============================
 					
 					}
-					
+				
+				location.reload();	
 			   }//end else
 		  },
 	  error: function(result) {
@@ -2255,11 +2263,11 @@ function fdisplay_ready_data() {
 	}
 		localStorage.fdisplay_data=fdisplay_data
 		
-		//if (errorFlag==false){
+		if (errorFlag==false){
 	
 			//local
 		
-		if (errorFlag==true){
+		//if (errorFlag==true){
 		var url = "#submitPage";
 		$.mobile.navigate(url);
 		}
@@ -2402,13 +2410,14 @@ function sf_ready_data() {
 //		errorFlag=false
 //	}
 	
-	//if (errorFlag==false){
+	if (errorFlag==false){
 	//Local
-	if (errorFlag==true){
+	//if (errorFlag==true){
 		//var url = "#submitPage";
 		var url = "#fixedDisplay";
-		
 		$.mobile.navigate(url);
+		//location.reload();
+		
 	}
 }
 function place_page_set() { 
@@ -2627,7 +2636,7 @@ function submit_data() {
 			var outletG=localStorage.outletNameID
 			var outlet=outletG.split('[')[1].replace(']','')
 			//$( "#dataShow").text(apipath+'syncSubmitData?cid='+localStorage.cid+'&cm_id='+localStorage.cm_id+'&cm_pass='+localStorage.cm_pass+'&synccode='+localStorage.synccode+'&outlet='+outlet+'&scheduleDate='+ localStorage.selected_date +'&outletEx='+localStorage.outletException+'&channel='+localStorage.outletChannel+'&latlong='+latlong+'&visitDate='+visitDate+'&startTime='+localStorage.startTime+'&endTime='+endTime+'&CategoryStr='+localStorage.CategoryStr+'&npd_data='+localStorage.npd_data+'&fdisplay_data='+localStorage.fdisplay_data+'&qpds_data='+localStorage.qpds_data+'&place_data='+localStorage.place_data);
-			//alert (apipath+'syncSubmitData?cid='+localStorage.cid+'&cm_id='+localStorage.cm_id+'&cm_pass='+localStorage.cm_pass+'&synccode='+localStorage.synccode+'&outlet='+outlet+'&scheduleDate='+ localStorage.selected_date +'&outletEx='+localStorage.outletException+'&channel='+localStorage.outletChannel+'&latlong='+latlong+'&visitDate='+visitDate+'&startTime='+localStorage.startTime+'&endTime='+endTime+'&CategoryStr='+localStorage.CategoryStr+'&npd_data='+localStorage.npd_data+'&fdisplay_data='+localStorage.fdisplay_data+'&qpds_data='+localStorage.qpds_data+'&place_data='+localStorage.place_data)
+			//alert (apipath+'syncSubmitData?cid='+localStorage.cid+'&cm_id='+localStorage.cm_id+'&cm_pass='+localStorage.cm_pass+'&synccode='+localStorage.synccode+'&outlet='+outlet+'&scheduleDate='+ localStorage.selected_date +'&outletEx='+localStorage.outletException+'&channel='+localStorage.outletChannel+'&latlong='+latlong+'&visitDate='+visitDate+'&startTime='+localStorage.startTime+'&endTime='+endTime+'&CategoryStr='+localStorage.CategoryStr+'&npd_data='+localStorage.npd_data+'&fdisplay_data='+localStorage.fdisplay_data+'&qpds_data='+localStorage.qpds_data+'&place_data='+localStorage.place_data+'&sf_data='+localStorage.sf_data)
 			var check_outlet= localStorage.outletString;
 			localStorage.outletChannel='MT'
 			$.ajax({
@@ -2742,7 +2751,9 @@ function submit_data() {
 //										// Enable disable div end
 //										
 //										
-										upload_category();
+										//upload_category();
+										upload_fd()
+										
 										cancel_outlet();
 										var url = "#outletPage";
 										$.mobile.navigate(url);
@@ -3524,7 +3535,7 @@ function upload_fd(){
 		}
 		
 	}
-	upload_qpds();
+	//upload_qpds();
 
 }
 
