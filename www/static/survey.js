@@ -2410,9 +2410,9 @@ function sf_ready_data() {
 		errorFlag=false
 	}
 	
-	//if (errorFlag==false){
+	if (errorFlag==false){
 	//Local
-	if (errorFlag==true){
+	//if (errorFlag==true){
 		//var url = "#submitPage";
 		var url = "#fixedDisplay";
 		$.mobile.navigate(url);
