@@ -1879,7 +1879,7 @@ function syncOutlet() {
 									
 					fdisplayStringShow=fdisplayStringShow+'<div id="fddiv_'+slab.toString()+'">'
 					fdisplayStringShow=fdisplayStringShow+'</br></br><table width="100%" border="0"> <tr><td style=" font-weight:bold; font-size:28px color:#006A6A; background:#FFECFF">'+fdisplaySlab_name+'</td> </tr></table>';
-					fdisplayStringShow=fdisplayStringShow+'<img height="100px" width="100%"  src="'+apipath_image+'static/uni_image/display/'+fdisplaySlab_image+'" alt="FixedDisplay" />'+apipath_image+'static/uni_image/display/'+fdisplaySlab_image;
+					fdisplayStringShow=fdisplayStringShow+'<img height="100px" width="100%"  src="'+apipath_image+'static/uni_image/display/'+fdisplaySlab_image+'" alt="FixedDisplay" />';
 					
 					//alert (apipath_image+'static/uni_image/display/'+fdisplaySlab_image)
 					
