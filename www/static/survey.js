@@ -1732,6 +1732,9 @@ function syncOutlet() {
 	$("#fdLoad_image").show()
 	
 	//alert (apipath+'sync_outlet?cid='+localStorage.cid+'&cm_id='+localStorage.cm_id+'&cm_pass='+localStorage.cm_pass+'&synccode='+localStorage.synccode+'&outlet='+localStorage.outletNameID);
+	var fdisplayStringShow=''
+	localStorage.fdisplayStringShow=''
+	
 	$.ajax({
 	 type: 'POST',
 	 url: apipath+'sync_outlet?cid='+localStorage.cid+'&cm_id='+localStorage.cm_id+'&cm_pass='+localStorage.cm_pass+'&synccode='+localStorage.synccode+'&outlet='+localStorage.outletNameID,
@@ -1841,7 +1844,7 @@ function syncOutlet() {
 			var fdisplaySlabTotal = fdisplaySlabArray.length;
 			
 			
-			var fdisplayStringShow=''
+			//var fdisplayStringShow=''
 			var fdisplayStringShowBefore=''
 			fdisplayStringShow=fdisplayStringShow+'<table width="100%" border="0"><tr style="color:#0329C0"> <td colspan="2" style="color:#006A6A; font-size:18px;">'+localStorage.routeIDName+'<br>'+localStorage.outletNameID+'</td></tr><tr > </table></br>'
 			
@@ -2417,7 +2420,7 @@ function sf_ready_data() {
 		//var url = "#submitPage";
 		var url = "#fixedDisplay";
 		$.mobile.navigate(url);
-		//location.reload();
+		location.reload();
 		
 	}
 }
