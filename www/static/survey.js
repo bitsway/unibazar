@@ -281,7 +281,7 @@ function cancel_outlet_next_next(){
 	var url = "#sFPage";
 	$.mobile.navigate(url);
 	//location.reload();
-	setDivCat()
+	//setDivCat()
 	
 	//location.reload();
 	
@@ -1878,7 +1878,7 @@ function syncOutlet() {
 					fdisplayStringShow=fdisplayStringShow+'</br></br><table width="100%" border="0"> <tr><td style=" font-weight:bold; font-size:28px color:#006A6A; background:#FFECFF">'+fdisplaySlab_name+'</td> </tr></table>';
 					fdisplayStringShow=fdisplayStringShow+'<img height="100px" width="100%"  src="'+apipath_image+'static/uni_image/display/'+fdisplaySlab_image+'" alt="FixedDisplay" />';
 					
-					
+					alert (apipath_image+'static/uni_image/display/'+fdisplaySlab_image)
 					
 					var fdisplaySingleArray = fdisplaySlabList.split('rdrd');	
 					var fdisplaySingleTotal = fdisplaySingleArray.length;
@@ -2410,9 +2410,9 @@ function sf_ready_data() {
 		errorFlag=false
 	}
 	
-	if (errorFlag==false){
+	//if (errorFlag==false){
 	//Local
-	//if (errorFlag==true){
+	if (errorFlag==true){
 		//var url = "#submitPage";
 		var url = "#fixedDisplay";
 		$.mobile.navigate(url);
