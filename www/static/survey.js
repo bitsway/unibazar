@@ -1915,6 +1915,7 @@ function syncOutlet() {
 			}
 			
 			localStorage.fdisplayStringShow=fdisplayStringShow
+			$("#fdisplay").html('');
 			$("#fdisplay").html(localStorage.fdisplayStringShow);
 			
 			$("#fdLoad_image").hide()
@@ -2010,7 +2011,7 @@ function syncOutlet() {
 					
 					}
 				
-				location.reload();	
+				//location.reload();	
 			   }//end else
 		  },
 	  error: function(result) {
