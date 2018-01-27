@@ -2010,7 +2010,7 @@ function syncOutlet() {
 					
 					}
 				
-				//location.reload();	
+				location.reload();	
 			   }//end else
 		  },
 	  error: function(result) {
