@@ -284,6 +284,8 @@ function cancel_outlet_next_next(){
 	//setDivCat()
 	
 	//location.reload();
+	location.reload();
+	fdisplay_page_set();
 	
 }
 function setDivCat(){
@@ -2020,9 +2022,9 @@ function sf_ready_data() {
 		//var url = "#submitPage";
 		var url = "#fixedDisplay";
 		$.mobile.navigate(url);
-		location.reload();
+		//location.reload();
 		
-		fdisplay_page_set();
+		//fdisplay_page_set();
 		
 	}
 }
