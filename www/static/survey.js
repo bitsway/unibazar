@@ -273,7 +273,7 @@ function cancel_outlet_next_next(){
 	
 	$("#outletInfoCategory").empty();
 	$("#outletInfoCategory").append(localStorage.outletNameID).trigger('create');
-	syncOutlet();
+	//syncOutlet();
 	$("#sf_outlet_nameID1").html(localStorage.outletNameID);
 	$("#place_outlet_nameID1").html(localStorage.outletNameID);
 	
@@ -284,7 +284,7 @@ function cancel_outlet_next_next(){
 	//setDivCat()
 	
 	//location.reload();
-	location.reload();
+	//location.reload();
 	fdisplay_page_set();
 	
 }
@@ -607,7 +607,7 @@ function check_user() {
 		localStorage.outletString='';
 	//	clear_autho();
    		
-	alert (apipath+'check_user?cid='+localStorage.cid+'&cm_id='+localStorage.cm_id+'&cm_pass='+localStorage.cm_pass+'&synccode='+localStorage.synccode)
+	//alert (apipath+'check_user?cid='+localStorage.cid+'&cm_id='+localStorage.cm_id+'&cm_pass='+localStorage.cm_pass+'&synccode='+localStorage.synccode)
 	//$("#error_login").html(apipath+'check_user?cid='+localStorage.cid+'&cm_id='+localStorage.cm_id+'&cm_pass='+localStorage.cm_pass+'&synccode='+localStorage.synccode);	
    		$.ajax({
 				 type: 'POST',
@@ -1040,6 +1040,7 @@ function select_outlet() {
 //				  
 				   //cancel_outlet();
 				  $("#outletCancel").hide();
+				  syncOutlet();
 				  var url = "#outletPage";
 				  $.mobile.navigate(url);	
 				  $(url).trigger('create');
@@ -1503,6 +1504,7 @@ function syncOutlet() {
 	
 	var outletID=outlet.split('[')[1].replace(']','')
 	var result_string=$("#Ostr_"+outletID).val()
+	localStorage.result_stringGetNadira=result_string
 	
 	//alert (apipath+'sync_outlet?cid='+localStorage.cid+'&cm_id='+localStorage.cm_id+'&cm_pass='+localStorage.cm_pass+'&synccode='+localStorage.synccode+'&outlet='+localStorage.outletNameID);
 	var fdisplayStringShow=''
@@ -2263,10 +2265,15 @@ function submit_data() {
 									if (result=='SUCCESS'){
 										
 										
-										var doneOutlet='<input type="radio" name="RadioOutlet" value="'+localStorage.outletNameID+'"></td><td width="60%">'+localStorage.outletNameID +' | '+ localStorage.outletChannel +'</td></tr></table></label>'							
+										//var doneOutlet='<input type="radio" name="RadioOutlet" value="'+localStorage.outletNameID+'"></td><td width="60%">'+localStorage.outletNameID +' | '+ localStorage.outletChannel +'</td></tr></table></label>'							
  										
-										var disOutlet='<input type="radio" name="RadioOutlet" value="'+localStorage.outletNameID+'" disabled="True"></td><td width="60%">'+localStorage.outletNameID +' | '+ localStorage.outletChannel +'</td></tr></table></label>'	
+										//var disOutlet='<input type="radio" name="RadioOutlet" value="'+localStorage.outletNameID+'" disabled="True"></td><td width="60%">'+localStorage.outletNameID +' | '+ localStorage.outletChannel +'</td></tr></table></label>'
+										var fullOutlet=localStorage.outletNameID
+										var outletID=outlet.split('[')[1].replace(']','')	
+										var doneOutlet='<label ><table width="100%" border="0"> <tr> <td width="5%">'+															'<input type="radio" name="RadioOutlet" value="'+localStorage.outletNameID+'"></td><td width="60%">'+localStorage.outletNameID +' | '+ localStorage.outletChannel +'<input type="hidden" name="Ostr_'+outletID+'" id="Ostr_'+outletID+'"  value="'+localStorage.result_stringGetNadira+'"></td></tr></table></label>'
 										
+										var disOutlet='<label ><table width="100%" border="0"> <tr> <td width="5%">'+															'<input type="radio" name="RadioOutlet" value="'+localStorage.outletNameID+'" disabled="True"></td><td width="60%">'+localStorage.outletNameID +' | '+ localStorage.outletChannel +'<input type="hidden" name="Ostr_'+outletID+'" id="Ostr_'+outletID+'"  value="'+localStorage.result_stringGetNadira+'"></td></tr></table></label>'
+										//<input type="radio" name="RadioOutlet" value="'+localStorage.outletNameID+'"></td><td width="60%">'+localStorage.outletNameID +' | '+ localStorage.outletChannel +'</td></tr></table></label>'
 										
 										
 										
