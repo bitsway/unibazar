@@ -1765,78 +1765,7 @@ function syncOutlet() {
 			fdisplayList = fdisplayArray[0].replace("<fdisplayList>","");
 			//alert (fdisplayList)
 			
-			//$("#show_result").text(fdisplayList);
 			
-								
-			//qpds = fdisplayArray[1];
-//			var qpdsArray = qpds.split('</qpdsList>');									
-//			qpdsList = qpdsArray[0].replace("<qpdsList>","");
-//			
-//			//==========Create NPD list
-//			
-//			var npdSingleArray = npdList.split('rdrd');	
-//			var npdSingleTotal = npdSingleArray.length;
-//			
-//			
-//			var npdStringShow=''
-//			npdStringShow=npdStringShow+'<table width="100%" border="0"><tr style="color:#0329C0"> <td colspan="2" style="color:#006A6A; font-size:18px;">'+localStorage.routeIDName+'<br>'+localStorage.outletNameID+'</td></tr><tr > </table></br>'
-//			//npdStringShow=npdStringShow+'<table  width="100%" border="0" cellpadding="0" cellspacing="0">'
-//			//npdStringShow=npdStringShow+'<tr bgcolor="#9FCED7"  ><td></td><td>Item</td><td> QTY</td><td ></td></tr><tr height="1px" bgcolor="#CCCCCC" ><td></td><td></td><td> </td><td ></td></tr>'
-//			
-//			//i=6;
-////								
-//			localStorage.npdTotal=npdSingleTotal
-//			
-//			//alert (localStorage.npdTotal)
-//			
-//			
-//			for (var i=0; i < npdSingleTotal-1; i++){
-//				npdArray = npdSingleArray[i].split('fdfd');
-//				localStorage.npdArrayTotal=npdArray.length;
-//				
-//				itemID=npdArray[0];
-//				itemName=npdArray[1];
-//				minQty_npd=npdArray[2];
-//				npd_image=npdArray[3];
-//				
-//				
-//				var i_text=i.toString()
-//				var ItemQtynpd='ItemQtynpd_'+i_text
-//				var Itemnpd='Itemnpd_'+i_text
-//				var minQty='minQty_npd_'+i_text
-//				
-//				var npd_image_div='npd_image_div_'+i_text
-//				var npd_image_div_hidden='npd_image_div_hidden_'+i_text
-//				var npd_image_name_hidden='npd_image_name_hidden_'+i_text
-//				
-//				
-//				
-//				npdStringShow=npdStringShow+'<img src="'+apipath_image+'static/uni_image/npd/'+npd_image+'" alt="NPD" />';
-//				
-//				//npdStringShow=npdStringShow+'<tr ><td>&nbsp;</td><td>'+itemName+
-////				'<input type="hidden" name="'+ Itemnpd +'" id="'+ Itemnpd +'" value="'+itemID+'" min="0">'+
-////				'<input type="hidden" name="'+ minQty +'" id="'+ minQty +'" value="'+minQty_npd+'" min="0">'+
-////				'</td>'+
-////				'<td width="60"><input type="number" name="'+ItemQtynpd +'" id="'+ ItemQtynpd +'" value="" min="0"></td><td width="5px">&nbsp;</td></tr>'
-////				npdStringShow=npdStringShow+'<tr height="1px" bgcolor="#CCCCCC" ><td></td><td></td><td> </td><td ></td></tr>'
-//				
-//				
-//				
-//				//====================	After
-//				npdStringShow=npdStringShow+'<table width="100%" border="0"><tr>'+
-//						'<td> <a data-role="button" href="#" onClick="get_pic_npd('+i_text+')" >Take Picture </a></td></tr></table>'+ 
-//						'<img id="'+npd_image_div+'" height="100px" width="100px"  src="" alt="NPDPic" />'+
-//						'<input type="hidden" name="'+ npd_image_div_hidden +'" id="'+ npd_image_div_hidden +'" value="" >'+
-//						'<input type="hidden" name="'+ npd_image_name_hidden +'" id="'+ npd_image_name_hidden +'" value="" ><br>------------------------------------------------------------------'
-//						
-//
-//				
-//				
-//				
-//			}
-//			npdStringShow=npdStringShow+'</table>'
-//			localStorage.npdStringShow=npdStringShow
-//			$("#npd").html(localStorage.npdStringShow);
 			
 	//=====================Create Fixed Display list
 			//alert (fdisplayList)
@@ -1920,92 +1849,13 @@ function syncOutlet() {
 			localStorage.fdisplayStringShow=fdisplayStringShow
 			$("#fdisplay").html('');
 			$("#fdisplay").html(localStorage.fdisplayStringShow);
+			alert (localStorage.fdisplayStringShow)
 			
 			$("#fdLoad_image").hide()
 			
 			
 
-			//==========Create QPDS Display list
-		
-			//var qpdsSlabArray = qpdsList.split('</scheme>');
-//			var qpdsSlabTotal = qpdsSlabArray.length;
-//			
-//			var qpdsStringShow=''
-//			qpdsStringShow=qpdsStringShow+'<table width="100%" border="0"><tr style="color:#0329C0"> <td colspan="2" style="color:#006A6A; font-size:18px;">'+localStorage.routeIDName+'<br>'+localStorage.outletNameID+'</td></tr><tr > </table></br>'
-//			
-//			localStorage.qpdsSlabTotal=qpdsSlabTotal
-//			if (parseInt(localStorage.qpdsSlabTotal)==1){	
-//				localStorage.qpdsSkip=1;	
-//			}
-//			
-//			for (var slab=0; slab < qpdsSlabTotal-1; slab++){
-//				
-//				var qpdsSlab_1Array = qpdsSlabArray[slab].split('<scheme>');
-//				var qpdsSlab_image = qpdsSlab_1Array[0];
-//				
-//				var qpdsSlabList = qpdsSlab_1Array[1].replace("<scheme>","");
-//				
-//				qpdsStringShow=qpdsStringShow+'<div id="qpdsdiv_'+slab.toString()+'">'
-//				
-//				qpdsStringShow=qpdsStringShow+'<img height="100px"  src="'+apipath_image+'static/uni_image/scheme/'+qpdsSlab_image+'" alt="QPDS" />';
-//				qpdsStringShow=qpdsStringShow+'<table width="100%" border="0" cellpadding="0" cellspacing="0">'
-//				
-//				
-//				
-//				var qpdsSingleArray = qpdsSlabList.split('rdrd');	
-//				var qpdsSingleTotal = qpdsSingleArray.length;
-//														
-//				var qpdsSL_image_div='qpdsSL_image_div_'+slab.toString()
-//				var qpdsSL_image_div_hidden='qpdsSL_image_div_hidden_'+slab.toString()
-//				var qpdsSL_image_name_hidden='qpdsSL_image_name_hidden_'+slab.toString()
-//				
-//				var qpdsSL_total_hidden='qpdsSL_total_hidden_'+slab.toString()
-//				
-//				var qpdsSL_f='qpdsSL_'+slab.toString()
-//				
-//				localStorage.qpdsTotal=qpdsSingleTotal
-//
-//				for (var i=0; i < qpdsSingleTotal-1; i++){
-//					qpdsArray = qpdsSingleArray[i].split('fdfd');
-//					scheme_qpds=qpdsArray[0]
-//					itemID=qpdsArray[1];
-//					itemName=qpdsArray[2];
-//					qpdsSL=qpdsArray[3];
-//					
-//					var i_text=i.toString()
-//					var slab_text=slab.toString()
-//					var ItemQtyqpds='ItemQtyqpds_'+slab.toString()+'_'+i_text
-//					var Itemqpds='Itemqpds_'+slab.toString()+'_'+i_text
-//					var ItemFaceupqpds='ItemFaceupqpds_'+slab.toString()+'_'+i_text
-//					var ItemVisibleqpds='ItemVisibleqpds_'+slab.toString()+'_'+i_text
-//					var schemeqpds='schemeqpds_'+slab.toString()+'_'+i_text											
-//
-//
-//				}
-//				qpdsStringShow=qpdsStringShow+'</table>'
-//				qpdsStringShow=qpdsStringShow+'</div>'
-//				
-//				
-//				
-//				//================
-//				//alert (qpdsSL_image_div_hidden)
-//				//alert (qpdsSL_image_name_hidden)
-//				qpdsStringShow=qpdsStringShow+
-//						  '<table width="100%" border="0"><tr><td>'+
-//						  ' <input type="hidden" name="'+ qpdsSL_f +'" id="'+ qpdsSL_f +'" value="'+qpdsSL+'" min="0">  '+
-//						  ' <a data-role="button" href="#" onClick="get_pic_qpds('+slab+')" >Take Picture </a></td></tr></table>'
-//				
-//				
-//				qpdsStringShow=qpdsStringShow+
-//					'<img id="'+qpdsSL_image_div+'" height="100px" width="100px"  src="" alt="Promotion" />'+
-//					'<input type="hidden" name="'+ qpdsSL_image_div_hidden +'" id="'+ qpdsSL_image_div_hidden +'" value="" >'+
-//					'<input type="hidden" name="'+ qpdsSL_image_name_hidden +'" id="'+ qpdsSL_image_name_hidden +'" value="" >'+
-//					'<input type="hidden" name="'+ qpdsSL_total_hidden +'" id="'+ qpdsSL_total_hidden +'" value="'+qpdsSingleTotal+'" ><br>-----------------------------------------------------------------'
-//		
-//		 
-//			}
-//			localStorage.qpdsStringShow=qpdsStringShow
-//			$("#qpds").html(localStorage.qpdsStringShow);
+			
 								
 			
 
