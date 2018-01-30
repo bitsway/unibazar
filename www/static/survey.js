@@ -1867,11 +1867,11 @@ function fdisplay_ready_data() {
 	}
 		localStorage.fdisplay_data=fdisplay_data
 		
-		//if (errorFlag==false){
+		if (errorFlag==false){
 	
 			//local
 		
-		if (errorFlag==true){
+		//if (errorFlag==true){
 		var url = "#submitPage";
 		$.mobile.navigate(url);
 		}
@@ -2010,13 +2010,13 @@ function sf_ready_data() {
 	localStorage.sf_data=sf_data
 	
 	var errorFlag=true
-	//if (sf_image_path!=''){
-//		errorFlag=false
-//	}
+	if (sf_image_path!=''){
+		errorFlag=false
+	}
 	
-	//if (errorFlag==false){
+	if (errorFlag==false){
 	//Local
-	if (errorFlag==true){
+	//if (errorFlag==true){
 		//var url = "#submitPage";
 		var url = "#fixedDisplay";
 		$.mobile.navigate(url);
