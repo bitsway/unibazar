@@ -2265,14 +2265,16 @@ function submit_data() {
 									if (result=='SUCCESS'){
 										
 										
-										//var doneOutlet='<input type="radio" name="RadioOutlet" value="'+localStorage.outletNameID+'"></td><td width="60%">'+localStorage.outletNameID +' | '+ localStorage.outletChannel +'</td></tr></table></label>'							
+										var doneOutlet='<input type="radio" name="RadioOutlet" value="'+localStorage.outletNameID+'"></td><td width="60%">'+localStorage.outletNameID +' | '+ localStorage.outletChannel 							
  										
-										//var disOutlet='<input type="radio" name="RadioOutlet" value="'+localStorage.outletNameID+'" disabled="True"></td><td width="60%">'+localStorage.outletNameID +' | '+ localStorage.outletChannel +'</td></tr></table></label>'
-										var fullOutlet=localStorage.outletNameID
-										var outletID=outlet.split('[')[1].replace(']','')	
-										var doneOutlet='<label ><table width="100%" border="0"> <tr> <td width="5%">'+															'<input type="radio" name="RadioOutlet" value="'+localStorage.outletNameID+'"></td><td width="60%">'+localStorage.outletNameID +' | '+ localStorage.outletChannel +'<input type="hidden" name="Ostr_'+outletID+'" id="Ostr_'+outletID+'"  value="'+localStorage.result_stringGetNadira+'"></td></tr></table></label>'
+										var disOutlet='<input type="radio" name="RadioOutlet" value="'+localStorage.outletNameID+'" disabled="True"></td><td width="60%">'+localStorage.outletNameID +' | '+ localStorage.outletChannel 
 										
-										var disOutlet='<label ><table width="100%" border="0"> <tr> <td width="5%">'+															'<input type="radio" name="RadioOutlet" value="'+localStorage.outletNameID+'" disabled="True"></td><td width="60%">'+localStorage.outletNameID +' | '+ localStorage.outletChannel +'<input type="hidden" name="Ostr_'+outletID+'" id="Ostr_'+outletID+'"  value="'+localStorage.result_stringGetNadira+'"></td></tr></table></label>'
+										
+										//var fullOutlet=localStorage.outletNameID
+//										var outletID=outlet.split('[')[1].replace(']','')	
+//										var doneOutlet='<label ><table width="100%" border="0"> <tr> <td width="5%">'+															'<input type="radio" name="RadioOutlet" value="'+localStorage.outletNameID+'"></td><td width="60%">'+localStorage.outletNameID +' | '+ localStorage.outletChannel +'<input type="hidden" name="Ostr_'+outletID+'" id="Ostr_'+outletID+'"  value="'+localStorage.result_stringGetNadira+'"></td></tr></table></label>'
+//										
+//										var disOutlet='<label ><table width="100%" border="0"> <tr> <td width="5%">'+															'<input type="radio" name="RadioOutlet" value="'+localStorage.outletNameID+'" disabled="True"></td><td width="60%">'+localStorage.outletNameID +' | '+ localStorage.outletChannel +'<input type="hidden" name="Ostr_'+outletID+'" id="Ostr_'+outletID+'"  value="'+localStorage.result_stringGetNadira+'"></td></tr></table></label>'
 										//<input type="radio" name="RadioOutlet" value="'+localStorage.outletNameID+'"></td><td width="60%">'+localStorage.outletNameID +' | '+ localStorage.outletChannel +'</td></tr></table></label>'
 										
 										
@@ -2291,7 +2293,7 @@ function submit_data() {
 //										
 //										
 										//Local
-										//upload_fd()
+										upload_fd()
 										
 										cancel_outlet();
 										var url = "#outletPage";
