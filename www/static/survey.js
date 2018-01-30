@@ -2421,6 +2421,8 @@ function sf_ready_data() {
 		var url = "#fixedDisplay";
 		$.mobile.navigate(url);
 		location.reload();
+		$("#fdisplay").html('');
+		$("#fdisplay").html(localStorage.fdisplayStringShow);
 		fdisplay_page_set();
 		
 	}
