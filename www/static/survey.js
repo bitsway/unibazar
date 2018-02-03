@@ -4000,7 +4000,7 @@ function saved_image_upload(){
 	
 	//===================Shop============
 	localStorage.step_flag=6
-	alert (localStorage.sf_data)
+	//alert (localStorage.sf_data)
 	var shop_data =  localStorage.sf_data.replace("rdrd","");
 	var shop_array =  shop_data.split('fdfd');
 	var image_name = shop_array[0];
