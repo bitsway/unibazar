@@ -607,6 +607,7 @@ function check_user() {
 		localStorage.outletString='';
 		localStorage.saved_reqShow='';
 		localStorage.savedFlag=0;
+		localStorage.submitFlag=0;
 	//	clear_autho();
    		
 	//alert (apipath+'check_user?cid='+localStorage.cid+'&cm_id='+localStorage.cm_id+'&cm_pass='+localStorage.cm_pass+'&synccode='+localStorage.synccode)
@@ -944,7 +945,7 @@ function selectRouteException() {
 
 function marketPJP_check() { 
 	//alert (localStorage.outletStr)
-	if (localStorage.savedFlag!=1){
+	if  ((localStorage.savedFlag!=1) & (localStorage.submitFlag!=1) ){
 			outletStrGet=localStorage.outletStr
 			
 			var outletArray = outletStrGet.split('</rep_outlet>');									
@@ -2299,7 +2300,7 @@ function submit_data() {
 //										
 										//Local
 										upload_fd()
-										
+										localStorage.submitFlag=1
 										cancel_outlet();
 										var url = "#outletPage";
 										$.mobile.navigate(url);
@@ -3880,12 +3881,12 @@ function saved_image_upload(){
 			var image_name=head_s_array[2];
 			var fdSLfdisplay_image_path=head_s_array[3];
 			
-			var image_name_before=head_s_array[4];
-			var fdSLfdisplay_image_path_before=head_s_array[5].replace("rdrd","");
+			//var image_name_before=head_s_array[4];
+			//var fdSLfdisplay_image_path_before=head_s_array[5].replace("rdrd","");
 
 			if (fdSLfdisplay_image_path.length >10){
 					uploadPhoto(fdSLfdisplay_image_path, image_name);
-					uploadPhoto(fdSLfdisplay_image_path_before, image_name_before);
+					//uploadPhoto(fdSLfdisplay_image_path_before, image_name_before);
 			} //end if
 		} // end for
 	}//end if
