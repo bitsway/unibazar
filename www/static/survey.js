@@ -3864,6 +3864,7 @@ function saved_image_upload(){
 		localStorage.fdisplay_data_ready = "_";
 	}
 	//===========================
+	alert (localStorage.fdisplay_data_ready)
 	if (localStorage.fdisplay_data_ready.length > 10){	
 		var fdisplay_array =  localStorage.fdisplay_data_ready.split('headend');
 		var fdisplay_head=fdisplay_array[0].replace("headstart","");
@@ -3885,6 +3886,7 @@ function saved_image_upload(){
 			//var fdSLfdisplay_image_path_before=head_s_array[5].replace("rdrd","");
 
 			if (fdSLfdisplay_image_path.length >10){
+					alert (fdSLfdisplay_image_path)
 					uploadPhoto(fdSLfdisplay_image_path, image_name);
 					//uploadPhoto(fdSLfdisplay_image_path_before, image_name_before);
 			} //end if
