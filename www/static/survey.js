@@ -3879,15 +3879,15 @@ function saved_image_upload(){
 			//var slabfdisplay =head_s_array[0];
 			//var fdisplayTotal=head_s_array[1];
 			
-			var image_name=head_s_array[0];
-			var fdSLfdisplay_image_path=head_s_array[1];
-			alert (image_name)
-			alert (fdSLfdisplay_image_path)
+			var image_name=head_s_array[1];
+			var fdSLfdisplay_image_path=head_s_array[0];
+			//alert (image_name)
+			//alert (fdSLfdisplay_image_path)
 			//var image_name_before=head_s_array[4];
 			//var fdSLfdisplay_image_path_before=head_s_array[5].replace("rdrd","");
 
 			if (fdSLfdisplay_image_path.length >10){
-					alert (fdSLfdisplay_image_path)
+					//alert (fdSLfdisplay_image_path)
 					uploadPhoto(fdSLfdisplay_image_path, image_name);
 					//uploadPhoto(fdSLfdisplay_image_path_before, image_name_before);
 			} //end if
