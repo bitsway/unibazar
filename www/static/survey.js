@@ -3864,7 +3864,7 @@ function saved_image_upload(){
 		localStorage.fdisplay_data_ready = "_";
 	}
 	//===========================
-	alert (localStorage.fdisplay_data_ready)
+	//alert (localStorage.fdisplay_data_ready)
 	if (localStorage.fdisplay_data_ready.length > 10){	
 		var fdisplay_array =  localStorage.fdisplay_data_ready.split('headend');
 		var fdisplay_head=fdisplay_array[0].replace("headstart","");
@@ -3876,12 +3876,13 @@ function saved_image_upload(){
 		for (var i=0; i < localStorage.fdisplaySlabTotal-1; i++){
 			var head_s_array=fdisplay_head_array[i].split('fdfd');
 			
-			var slabfdisplay =head_s_array[0];
-			var fdisplayTotal=head_s_array[1];
+			//var slabfdisplay =head_s_array[0];
+			//var fdisplayTotal=head_s_array[1];
 			
-			var image_name=head_s_array[2];
-			var fdSLfdisplay_image_path=head_s_array[3];
-			
+			var image_name=head_s_array[0];
+			var fdSLfdisplay_image_path=head_s_array[1];
+			alert (image_name)
+			alert (fdSLfdisplay_image_path)
 			//var image_name_before=head_s_array[4];
 			//var fdSLfdisplay_image_path_before=head_s_array[5].replace("rdrd","");
 
