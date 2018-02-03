@@ -3999,8 +3999,9 @@ function saved_image_upload(){
 //	}
 	
 	//===================Shop============
-	//localStorage.step_flag=6
-	var shop_data =  localStorage.localStorage.sf_data.replace("rdrd","");
+	localStorage.step_flag=6
+	alert (localStorage.sf_data)
+	var shop_data =  localStorage.sf_data.replace("rdrd","");
 	var shop_array =  shop_data.split('fdfd');
 	var image_name = shop_array[0];
 	var shop_image_path = shop_array[1];
