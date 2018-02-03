@@ -6,7 +6,7 @@
 
 
 
-//var apipath='http://127.0.0.1:8000/unibazar/syncmobile_schedule_eon_new/';
+//var apipath='http://127.0.0.1:8000/uniext/syncmobile_schedule_eon/';
 //var apipath_image = 'http://127.0.0.1:8000/unilever/';
 
 
@@ -605,8 +605,6 @@ function check_user() {
 		localStorage.saved_req=''
 		
 		localStorage.outletString='';
-		localStorage.saved_reqShow='';
-		localStorage.savedFlag=0;
 	//	clear_autho();
    		
 	//alert (apipath+'check_user?cid='+localStorage.cid+'&cm_id='+localStorage.cm_id+'&cm_pass='+localStorage.cm_pass+'&synccode='+localStorage.synccode)
@@ -944,34 +942,32 @@ function selectRouteException() {
 
 function marketPJP_check() { 
 	//alert (localStorage.outletStr)
-	if (localStorage.savedFlag!=1){
-			outletStrGet=localStorage.outletStr
-			
-			var outletArray = outletStrGet.split('</rep_outlet>');									
-			var outletStr = outletArray[0].replace("<rep_outlet>","");
-			
-			var outletStrArray = outletStr.split('<rdrd>');	
-			var outletListStr=''
-			//alert (outletStrArray.length)
-			for (var i=0; i < outletStrArray.length-1; i++){				
-				outletSingle = outletStrArray[i].split('<outletStr>')[0];
-				outletStrData = outletStrArray[i].split('<outletStr>')[1];
-				var outlet=outletSingle.split('fdfd')[0];
-				var outletID=outlet.split('[')[1].replace(']','')
-				
-				var channel=outletSingle.split('fdfd')[1];		
-				
-				outletListStr=outletListStr+'<label ><table width="100%" border="0"> <tr> <td width="5%">'+															'<input type="radio" name="RadioOutlet" value="'+outlet+'"></td><td width="60%">'+outlet +' | '+ channel +'<input type="hidden" name="Ostr_'+outletID+'" id="Ostr_'+outletID+'"  value="'+outletStrData+'"></td></tr></table></label>'
-				
-				//alert (outletListStr)
-																
+	outletStrGet=localStorage.outletStr
+	
+	var outletArray = outletStrGet.split('</rep_outlet>');									
+	var outletStr = outletArray[0].replace("<rep_outlet>","");
+	
+	var outletStrArray = outletStr.split('<rdrd>');	
+	var outletListStr=''
+	//alert (outletStrArray.length)
+	for (var i=0; i < outletStrArray.length-1; i++){				
+		outletSingle = outletStrArray[i].split('<outletStr>')[0];
+		outletStrData = outletStrArray[i].split('<outletStr>')[1];
+		var outlet=outletSingle.split('fdfd')[0];
+		var outletID=outlet.split('[')[1].replace(']','')
 		
-					
-				}
-				outletListStr=outletListStr+'<br/><br/> <a id="selectOButton" data-role="button" onClick="select_outlet();" >Next</a>'
-			localStorage.outletString=outletListStr
-			$("#outletString").html(localStorage.outletString);
-	}
+		var channel=outletSingle.split('fdfd')[1];		
+		
+		outletListStr=outletListStr+'<label ><table width="100%" border="0"> <tr> <td width="5%">'+															'<input type="radio" name="RadioOutlet" value="'+outlet+'"></td><td width="60%">'+outlet +' | '+ channel +'<input type="hidden" name="Ostr_'+outletID+'" id="Ostr_'+outletID+'"  value="'+outletStrData+'"></td></tr></table></label>'
+		
+		//alert (outletListStr)
+														
+
+			
+		}
+		outletListStr=outletListStr+'<br/><br/> <a id="selectOButton" data-role="button" onClick="select_outlet();" >Next</a>'
+	localStorage.outletString=outletListStr
+	$("#outletString").html(localStorage.outletString);
 	var url = "#outletPage";
 	$.mobile.navigate(url);
 	$(url).trigger('create');
@@ -2248,7 +2244,6 @@ function submit_data() {
 			var fdisplay_data=localStorage.fdisplay_data_ready.replace('detaildetail','')
 			var qpds_data=localStorage.qpds_data_ready.replace('detaildetail','')
 			var outletG=localStorage.outletNameID
-			//alert (outletG)
 			var outlet=outletG.split('[')[1].replace(']','')
 			//$( "#dataShow").text(apipath+'syncSubmitData?cid='+localStorage.cid+'&cm_id='+localStorage.cm_id+'&cm_pass='+localStorage.cm_pass+'&synccode='+localStorage.synccode+'&outlet='+outlet+'&scheduleDate='+ localStorage.selected_date +'&outletEx='+localStorage.outletException+'&channel='+localStorage.outletChannel+'&latlong='+latlong+'&visitDate='+visitDate+'&startTime='+localStorage.startTime+'&endTime='+endTime+'&CategoryStr='+localStorage.CategoryStr+'&npd_data='+localStorage.npd_data+'&fdisplay_data='+localStorage.fdisplay_data+'&qpds_data='+localStorage.qpds_data+'&place_data='+localStorage.place_data);
 			//alert (apipath+'syncSubmitData?cid='+localStorage.cid+'&cm_id='+localStorage.cm_id+'&cm_pass='+localStorage.cm_pass+'&synccode='+localStorage.synccode+'&outlet='+outlet+'&scheduleDate='+ localStorage.selected_date +'&outletEx='+localStorage.outletException+'&channel='+localStorage.outletChannel+'&latlong='+latlong+'&visitDate='+visitDate+'&startTime='+localStorage.startTime+'&endTime='+endTime+'&CategoryStr='+localStorage.CategoryStr+'&npd_data='+localStorage.npd_data+'&fdisplay_data='+localStorage.fdisplay_data+'&qpds_data='+localStorage.qpds_data+'&place_data='+localStorage.place_data+'&sf_data='+localStorage.sf_data)
@@ -2317,49 +2312,32 @@ function submit_data() {
 							 $("#sub_button").show();
 							 $("#submit_data").html("Please try later");
 							// $("#submit_data").html("Network timeout. Please ensure you have good network signal and working Internet.");
-							 localStorage.dataSubmit=0;
-							 localStorage.submit_count=parseInt(localStorage.submit_count)+1
+							// localStorage.dataSubmit=0;
+//							 localStorage.submit_count=parseInt(localStorage.submit_count)+1
+//							 
+//							
+//							 if (localStorage.submit_count<1){
+//								 buttonCheck();
+//								 $("#submit_data").html('');
+//								 var url = "#submitPage";
+//								 $.mobile.navigate(url);	
+//							 }
+//							 else{
+//								  $("#submit_data").html("Saved Request. Please try later");
+//								  
+//								  
+//								  localStorage.outletString=check_outlet.replace('<input type="radio" name="RadioOutlet" value="'+localStorage.selectedOutlet+'rdrd'+localStorage.selected_date_get+'">','<input type="radio" name="RadioOutlet" value="'+localStorage.selectedOutlet+'rdrd'+localStorage.selected_date_get+'" disabled="True">');
+//								
+//								
+//								  localStorage.saved_req=localStorage.saved_req+'<savedsaved><'+localStorage.selectedOutlet+'><OidOid>'+localStorage.outletIDnameShow+'<showshow>'+apipath+'syncSubmitData?cid='+localStorage.cid+'&cm_id='+localStorage.cm_id+'&cm_pass='+localStorage.cm_pass+'&synccode='+localStorage.synccode+'&route='+localStorage.selectedRoute+'&routeEx='+localStorage.routeException+'&outlet='+localStorage.selectedOutlet+'&scheduleDate='+ localStorage.selected_date +'&outletEx='+localStorage.outletException+'&channel='+localStorage.outletChannel+'&latlong='+latlong+'&visitDate='+visitDate+'&startTime='+localStorage.startTime+'&endTime='+endTime+'&giftImage='+giftImage+'&mhskus_data='+localStorage.mhskus_data_ready+'&npd_data='+localStorage.npd_data_ready+'&fdisplay_data='+localStorage.fdisplay_data_ready+'&qpds_data='+localStorage.qpds_data_ready+'&gift_data='+localStorage.gift_data_ready+'&place_data='+localStorage.place_data_ready+'&shop_data='+localStorage.shop_data_ready+'&key_data='+localStorage.key_data_ready+'&fdisplayTotal='+localStorage.fdisplayTotal+'&qpdsSlabTotal='+localStorage.qpdsSlabTotal+'</'+localStorage.selectedOutlet+'>'
+//							 	;
+//								
+//								$("#outletString").empty();
+//								$("#outletString").append(localStorage.outletString).trigger('create');
+//								
+//								cancel_outlet();
 							 
-							
-							 if (localStorage.submit_count<1){
-								 buttonCheck();
-								 $("#submit_data").html('');
-								 var url = "#submitPage";
-								 $.mobile.navigate(url);	
-							 }
-							 else{
-								  $("#submit_data").html("Saved Request. Please try later");
-								  
-								  
-								  localStorage.outletString=check_outlet.replace('<input type="radio" name="RadioOutlet" value="'+localStorage.selectedOutlet+'rdrd'+localStorage.selected_date_get+'">','<input type="radio" name="RadioOutlet" value="'+localStorage.selectedOutlet+'rdrd'+localStorage.selected_date_get+'" disabled="True">');
-								
-									
-									
-										
-								  localStorage.saved_req=localStorage.saved_req+'<savedsaved><'+localStorage.outletNameID+'><OidOid>'+localStorage.outletNameID+'<showshow>'+apipath+'syncSubmitData?cid='+localStorage.cid+'&cm_id='+localStorage.cm_id+'&cm_pass='+localStorage.cm_pass+'&synccode='+localStorage.synccode+'&outlet='+outlet+'&scheduleDate='+ localStorage.selected_date +'&outletEx='+localStorage.outletException+'&channel='+localStorage.outletChannel+'&latlong='+latlong+'&visitDate='+visitDate+'&startTime='+localStorage.startTime+'&endTime='+endTime+'&CategoryStr='+localStorage.CategoryStr+'&npd_data='+localStorage.npd_data+'&fdisplay_data='+localStorage.fdisplay_data+'&qpds_data='+localStorage.qpds_data+'&place_data='+localStorage.place_data+'&sf_data='+localStorage.sf_data+'&fdisplayTotal='+localStorage.fdisplayTotal+'&qpdsSlabTotal='+localStorage.qpdsSlabTotal+'</'+localStorage.selectedOutlet+'>'
-							 	;
-								//alert (localStorage.saved_reqShow)
-								//$("#outletString").empty();
-								//$("#outletString").append(localStorage.outletString).trigger('create');
-								
-								//alert (check_outlet)
-								var doneOutlet='<input type="radio" name="RadioOutlet" value="'+localStorage.outletNameID+'"></td><td width="60%">'+localStorage.outletNameID +' | '+ localStorage.outletChannel 							
- 										
-								var disOutlet='<input type="radio" name="RadioOutlet" value="'+localStorage.outletNameID+'" disabled="True"></td><td width="60%">'+localStorage.outletNameID +' | '+ localStorage.outletChannel 
-								
-								//alert (doneOutlet)
-								//alert (disOutlet)
-								localStorage.outletString=check_outlet.replace(doneOutlet,disOutlet);
-
-								$("#outletString").empty();
-								$("#outletString").append(localStorage.outletString).trigger('create');
-								
-								//var url = "#outletPage";
-								localStorage.savedFlag=1
-								//$.mobile.navigate(url);
-								cancel_outlet();
-							 
-							 }
+	//						 }
 						  }
 					  });//end ajax
 	
@@ -3598,7 +3576,7 @@ function savedVisit(){
 	var saved_req=localStorage.saved_req;
 	var savedList=saved_req.split('<savedsaved>')
 	$("#savedVisitRecord").text(localStorage.saved_req);
-	//alert (localStorage.saved_req)
+	
 	var saved_req_str=''
 	for (var i=0; i < savedList.length; i++){	
 		
@@ -3643,45 +3621,41 @@ function submi_saved_req(i){
 		$("#login_image_saved").show();
 		$("#savedVisitRecord").hide();
 		var submit_data=$("#saved_text_"+i).val();
-		//alert (submit_data)
+		
 		submit_dataList=submit_data.split('&')
 		
-		//var route=submit_dataList[4].replace('route=','')
-		//var routeEx=submit_dataList[5].replace('routeEx=','')
-		var outlet=submit_dataList[4].replace('outlet=','')
-		var selected_date=submit_dataList[5].replace('scheduleDate=','')
-		var outletEx=submit_dataList[6].replace('outletEx=','')
+		var route=submit_dataList[4].replace('route=','')
+		var routeEx=submit_dataList[5].replace('routeEx=','')
+		var outlet=submit_dataList[6].replace('outlet=','')
+		var selected_date=submit_dataList[7].replace('scheduleDate=','')
+		var outletEx=submit_dataList[8].replace('outletEx=','')
 		
 		
-		var channel=submit_dataList[7].replace('channel=','')
-		var latlong=submit_dataList[8].replace('latlong=','')
-		var visitDate=submit_dataList[9].replace('visitDate=','')
-		var startTime=submit_dataList[10].replace('startTime=','')
-		var endTime=submit_dataList[11].replace('endTime=','')
-		var giftImage=''
+		var channel=submit_dataList[9].replace('channel=','')
+		var latlong=submit_dataList[10].replace('latlong=','')
+		var visitDate=submit_dataList[11].replace('visitDate=','')
+		var startTime=submit_dataList[12].replace('startTime=','')
+		var endTime=submit_dataList[13].replace('endTime=','')
+		var giftImage=submit_dataList[14].replace('giftImage=','')
+		var mhskus_data=submit_dataList[15].replace('mhskus_data=','')
+		var npd_data=submit_dataList[16].replace('npd_data=','')
+		var fdisplay_data=submit_dataList[17].replace('fdisplay_data=','')
+		var qpds_data=submit_dataList[18].replace('qpds_data=','')
+		var gift_data=submit_dataList[19].replace('gift_data=','')
+		var place_data=submit_dataList[20].replace('place_data=','')
+		var shop_data=submit_dataList[21].replace('shop_data=','')
+		var key_data=submit_dataList[22].replace('key_data=','')
 		
-		var mhskus_data=''
-		var npd_data=''
-		var fdisplay_data=submit_dataList[14].replace('fdisplay_data=','')
-		var qpds_data=''
-		var gift_data=''
-		var place_data=''
-		var shop_data=''
-		var key_data=''
+		var fdisplayTotal=submit_dataList[23].replace('fdisplayTotal=','')
+		var qpdsSlabTotal=submit_dataList[24].replace('qpdsSlabTotal=','')
 		
-		var sf_data=submit_dataList[17].replace('qpdsSlabTotal=','')
-		var fdisplayTotal=submit_dataList[18].replace('fdisplayTotal=','')
-		var qpdsSlabTotal=submit_dataList[19].replace('qpdsSlabTotal=','')
-		
-		
-		//localStorage.selectedRoute = route
-		//localStorage.routeException = routeEx
+		localStorage.selectedRoute = route
+		localStorage.routeException = routeEx
 		localStorage.selectedOutlet = outlet
 		localStorage.outletException  = outletEx
 		localStorage.outletChannel = channel
 		localStorage.mhskus_data_ready = mhskus_data
 		localStorage.npd_data_ready = npd_data
-		//alert ('Test')
 		localStorage.fdisplay_data_ready = fdisplay_data
 		localStorage.qpds_data_ready = qpds_data
 		localStorage.gift_data_ready = gift_data
@@ -3690,7 +3664,6 @@ function submi_saved_req(i){
 		localStorage.key_data_ready=key_data
 		localStorage.fdisplayTotal = fdisplayTotal
 		localStorage.qpdsSlabTotal = qpdsSlabTotal
-		localStorage.sf_data=sf_data
 		
 		
 		
@@ -3704,10 +3677,7 @@ function submi_saved_req(i){
 		
 	
 		
-		var url_submit = apipath+'syncSubmitData?cid='+localStorage.cid+'&cm_id='+localStorage.cm_id+'&cm_pass='+localStorage.cm_pass+'&synccode='+localStorage.synccode+'&route='+localStorage.selectedRoute+'&routeEx='+localStorage.routeException+'&outlet='+localStorage.selectedOutlet+'&scheduleDate='+ localStorage.selected_date +'&outletEx='+localStorage.outletException+'&channel='+localStorage.outletChannel+'&latlong='+latlong+'&visitDate='+visitDate+'&startTime='+startTime+'&endTime='+endTime+'&giftImage='+giftImage+'&mhskus_data='+localStorage.mhskus_data_ready+'&npd_data='+localStorage.npd_data_ready+'&fdisplay_data='+fdisplay_data+'&qpds_data='+qpds_data+'&gift_data='+localStorage.gift_data_ready+'&place_data='+localStorage.place_data_ready+'&sf_data='+localStorage.sf_data
-		
-		//alert ('Test')
-		//apipath+'syncSubmitData?cid='+localStorage.cid+'&cm_id='+localStorage.cm_id+'&cm_pass='+localStorage.cm_pass+'&synccode='+localStorage.synccode+'&route='+localStorage.selectedRoute+'&routeEx='+localStorage.routeException+'&outlet='+localStorage.selectedOutlet+'&scheduleDate='+ localStorage.selected_date +'&outletEx='+localStorage.outletException+'&channel='+localStorage.outletChannel+'&latlong='+latlong+'&visitDate='+visitDate+'&startTime='+startTime+'&endTime='+endTime+'&giftImage='+giftImage+'&mhskus_data='+localStorage.mhskus_data_ready+'&npd_data='+localStorage.npd_data_ready+'&fdisplay_data='+fdisplay_data+'&qpds_data='+qpds_data+'&gift_data='+localStorage.gift_data_ready+'&place_data='+localStorage.place_data_ready+'&shop_data='+localStorage.shop_data_ready+'&key_data='+localStorage.key_data_ready
+		var url_submit = apipath+'syncSubmitData?cid='+localStorage.cid+'&cm_id='+localStorage.cm_id+'&cm_pass='+localStorage.cm_pass+'&synccode='+localStorage.synccode+'&route='+localStorage.selectedRoute+'&routeEx='+localStorage.routeException+'&outlet='+localStorage.selectedOutlet+'&scheduleDate='+ localStorage.selected_date +'&outletEx='+localStorage.outletException+'&channel='+localStorage.outletChannel+'&latlong='+latlong+'&visitDate='+visitDate+'&startTime='+startTime+'&endTime='+endTime+'&giftImage='+giftImage+'&mhskus_data='+localStorage.mhskus_data_ready+'&npd_data='+localStorage.npd_data_ready+'&fdisplay_data='+fdisplay_data+'&qpds_data='+qpds_data+'&gift_data='+localStorage.gift_data_ready+'&place_data='+localStorage.place_data_ready+'&shop_data='+localStorage.shop_data_ready+'&key_data='+localStorage.key_data_ready
 		
 	
 			   
@@ -3734,12 +3704,11 @@ function submi_saved_req(i){
 	//	locatio.reload();
 		
 		//$("#savedVisitRecordError").html(url_submit);
-		
 		$.ajax({
 				type: 'POST',
 				url: url_submit,
 				 success: function(result) {	
-						
+						//alert (result)
 						if (result==''){
 							alert ('Sorry Network not available');
 						}
@@ -3893,90 +3862,90 @@ function saved_image_upload(){
 	//=============================
 	
 	//==============QPDS====
-	//localStorage.step_flag=2
-//	if (typeof localStorage.qpds_data_ready === "undefined") {
-//		localStorage.qpds_data_ready ="_";
-//	}
+	localStorage.step_flag=2
+	if (typeof localStorage.qpds_data_ready === "undefined") {
+		localStorage.qpds_data_ready ="_";
+	}
  	//localStorage.qpdsdataSubmit=1;
-	//if (localStorage.qpds_data_ready.length > 10){
-//		var qpds_array =  localStorage.qpds_data_ready.split('headend');
-//		var qpds_head=qpds_array[0].replace("headstart","");
-//		var qpds_detail=qpds_array[1];
-//		var qpds_head_array =  qpds_head.split('rdrd');
-//		localStorage.qpdsSlabTotal=qpds_head_array.length
+	if (localStorage.qpds_data_ready.length > 10){
+		var qpds_array =  localStorage.qpds_data_ready.split('headend');
+		var qpds_head=qpds_array[0].replace("headstart","");
+		var qpds_detail=qpds_array[1];
+		var qpds_head_array =  qpds_head.split('rdrd');
+		localStorage.qpdsSlabTotal=qpds_head_array.length
 		
 		
-		//for (var i=0; i < localStorage.qpdsSlabTotal-1; i++){
-//			var head_s_array=qpds_head_array[i].split('fdfd');
-//		
-//			var slabqpds =head_s_array[0];
-//			var qpdsTotal=head_s_array[1];
-//			var image_name=head_s_array[2];
-//			var qpdsImg_path=head_s_array[3];
-//
-//			
-//			if (qpdsImg_path.length >10){
-//				uploadPhoto(qpdsImg_path, image_name);
-//				$("#submit_data").html("");		
-//				
-//				}
-//				else{
-//					$("#submit_data").html("Promotion Image Not Available");				
-//				}
-//		}//end for
-//	}//end if
+		for (var i=0; i < localStorage.qpdsSlabTotal-1; i++){
+			var head_s_array=qpds_head_array[i].split('fdfd');
+		
+			var slabqpds =head_s_array[0];
+			var qpdsTotal=head_s_array[1];
+			var image_name=head_s_array[2];
+			var qpdsImg_path=head_s_array[3];
+
+			
+			if (qpdsImg_path.length >10){
+				uploadPhoto(qpdsImg_path, image_name);
+				$("#submit_data").html("");		
+				
+				}
+				else{
+					$("#submit_data").html("Promotion Image Not Available");				
+				}
+		}//end for
+	}//end if
 	
 	//================NPD=========
-	//localStorage.step_flag=3
-//	if (typeof localStorage.npd_data_ready === "undefined") {
-//		localStorage.npd_data_ready ="_";
-//	}
+	localStorage.step_flag=3
+	if (typeof localStorage.npd_data_ready === "undefined") {
+		localStorage.npd_data_ready ="_";
+	}
  	
-	//if (localStorage.npd_data_ready.length > 10){
-//		var npd_array =  localStorage.npd_data_ready.split('rdrd');
-//	 	for (var i=0; i < npd_array.length-1; i++){
-//			var npd_single_array = npd_array[i].split('fdfd');	
-//			var itemQty=npd_single_array[1];
-//			var npd_image_div_path=npd_single_array[3];
-//			var npd_image_name_hidden=npd_single_array[4];
-//			
-// 			
-//			if (npd_image_div_path.length >10){
-//				uploadPhoto(npd_image_div_path, npd_image_name_hidden);
-//				$("#submit_data").html("");		
-//				
-//				}
-//				else{
-//					$("#submit_data").html("Promotion Image Not Available");				
-//				}
-//		}//end for
-//	}//end if
+	if (localStorage.npd_data_ready.length > 10){
+		var npd_array =  localStorage.npd_data_ready.split('rdrd');
+	 	for (var i=0; i < npd_array.length-1; i++){
+			var npd_single_array = npd_array[i].split('fdfd');	
+			var itemQty=npd_single_array[1];
+			var npd_image_div_path=npd_single_array[3];
+			var npd_image_name_hidden=npd_single_array[4];
+			
+ 			
+			if (npd_image_div_path.length >10){
+				uploadPhoto(npd_image_div_path, npd_image_name_hidden);
+				$("#submit_data").html("");		
+				
+				}
+				else{
+					$("#submit_data").html("Promotion Image Not Available");				
+				}
+		}//end for
+	}//end if
 	
 	//===================Gift=========
-	//localStorage.step_flag=4
-//	var gift_data =  localStorage.gift_data_ready.replace("rdrd","");
-//	var gift_array =  gift_data.split('fdfd');
-//	var image_name = gift_array[0];
-//	var gift_image_path = gift_array[1];
-//	
-//	//var gift_month = gift_array[2];
-//
-//	
-//	
-//	if (gift_image_path.length >10){
-//		uploadPhoto(gift_image_path, image_name);
-//		$("#submit_data").html("");
-//
-//	} else {
-//			$("#submit_data").html("Gift Image Not Available");
-//	}
+	localStorage.step_flag=4
+	var gift_data =  localStorage.gift_data_ready.replace("rdrd","");
+	var gift_array =  gift_data.split('fdfd');
+	var image_name = gift_array[0];
+	var gift_image_path = gift_array[1];
+	
+	//var gift_month = gift_array[2];
+
+	
+	
+	if (gift_image_path.length >10){
+		uploadPhoto(gift_image_path, image_name);
+		$("#submit_data").html("");
+
+	} else {
+			$("#submit_data").html("Gift Image Not Available");
+	}
 	//=====================Place
-	//localStorage.step_flag=5
-	//var place_data =  localStorage.place_data_ready.replace("rdrd","");
-//	var place_array =  place_data.split('fdfd');
-//	
-//	var image_name = place_array[0];
-//	var place_image_path = place_array[1];
+	localStorage.step_flag=5
+	var place_data =  localStorage.place_data_ready.replace("rdrd","");
+	var place_array =  place_data.split('fdfd');
+	
+	var image_name = place_array[0];
+	var place_image_path = place_array[1];
 
 	//var is_near_inFront_actual= place_array[2];
 	//var is_beside_adjacent_actual= place_array[3];
@@ -3984,19 +3953,19 @@ function saved_image_upload(){
 	//var is_clearlyVis_noObs_actual= place_array[5];
 	
 
-	//if (place_image_path.length >10){
-//				uploadPhoto(place_image_path, image_name);
-//				$("#submit_data").html("");
-//	} else {
-//
-//			$("#submit_data").html("Place Image Not Available");
-//			//$("#submit_data").html("");				
-//
-//	}
+	if (place_image_path.length >10){
+				uploadPhoto(place_image_path, image_name);
+				$("#submit_data").html("");
+	} else {
+
+			$("#submit_data").html("Place Image Not Available");
+			//$("#submit_data").html("");				
+
+	}
 	
 	//===================Shop============
-	//localStorage.step_flag=6
-	var shop_data =  localStorage.localStorage.sf_data.replace("rdrd","");
+	localStorage.step_flag=6
+	var shop_data =  localStorage.shop_data_ready.replace("rdrd","");
 	var shop_array =  shop_data.split('fdfd');
 	var image_name = shop_array[0];
 	var shop_image_path = shop_array[1];

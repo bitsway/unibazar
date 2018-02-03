@@ -6,14 +6,14 @@
         id        = "com.phonegap.UniBazar01"
         version   = "1.0.1">
 
-    <name>UniBazar</name>
+    <name>LabherBazar</name>
 
     <description>
-        UniBazar
+        LabherBazar
     </description>
 
     <author href="www.yeapps.com" email="sabbir456@gmail.com">
-        UniBazar
+        LabherBazar
     </author>
 
     <!--
