@@ -3449,7 +3449,7 @@ function buttonCheck(){
 		
 		//
 //		$("#location_button").hide();
-		$("#sub_button_div").hide();
+		$("#sub_button_div").show();
 //
 //		$("#image_up_button").hide();
 //		
