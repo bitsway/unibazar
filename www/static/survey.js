@@ -666,13 +666,14 @@ function check_user() {
 								//create cancel reason combo
 								//alert (cancelList)
 								var cancelArray = cancelList.split('rdrd');	
-								var cancel_combo_str='<select name="cancel_cause" id="cancel_cause" >'
-								cancel_combo_str=cancel_combo_str+'<option value=""></option>'
-								cancel_combo_str=cancel_combo_str+'<option value="Will try later">Will try later</option>'
-								for (var i=0; i < cancelArray.length-1; i++){				
-									cancel_combo_str=cancel_combo_str +'<option value="'+cancelArray[i].split('fdfd')[0]+'">'+cancelArray[i].split('fdfd')[1]+'</option>'			  	
-								}
-								cancel_combo_str=cancel_combo_str+'</select>'
+								var cancel_combo_str='<input type="hidden" name="cancel_cause" id="cancel_cause" value="Will try later" >'
+								//var cancel_combo_str='<select name="cancel_cause" id="cancel_cause" >'
+								//cancel_combo_str=cancel_combo_str+'<option value=""></option>'
+								//cancel_combo_str=cancel_combo_str+'<option value="Will try later">Will try later</option>'
+								//for (var i=0; i < cancelArray.length-1; i++){				
+//									cancel_combo_str=cancel_combo_str +'<option value="'+cancelArray[i].split('fdfd')[0]+'">'+cancelArray[i].split('fdfd')[1]+'</option>'			  	
+//								}
+								//cancel_combo_str=cancel_combo_str+'</select>'
 								
 								
 								localStorage.cancel_combo_str=cancel_combo_str
