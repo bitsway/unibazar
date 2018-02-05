@@ -249,9 +249,10 @@ function cancel_outlet_next(){
 	//$("#cpageOutletNameID").empty();
 	$("#cpageOutletNameID1").html(localStorage.outletNameID);
 	//alert (localStorage.outletNameID)
-	var url = "#cancelPage";
-	$.mobile.navigate(url);
-	location.reload();
+	//var url = "#cancelPage";
+	//$.mobile.navigate(url);
+	//location.reload();
+	cancel_outlet_Back()
 	
 	
 }
@@ -3442,13 +3443,13 @@ function checkQtyQpds(i){
 
 //		==========================Button check start==============
 function buttonCheck(){
-		if ((localStorage.latlongSubmit==0) && (localStorage.placeLatLongCount >3)){
-		localStorage.latlongSubmit=1
+		//if ((localStorage.latlongSubmit==0) && (localStorage.placeLatLongCount >3)){
+		//localStorage.latlongSubmit=1
 		
 		
 		//
 //		$("#location_button").hide();
-//		$("#sub_button_div").hide();
+		$("#sub_button_div").hide();
 //
 //		$("#image_up_button").hide();
 //		
@@ -3460,49 +3461,49 @@ function buttonCheck(){
 //		$("#lat").val(0);
 //		$("#long").val(0);
 	
-	}
-	if ((localStorage.latlongSubmit==0) & (localStorage.dataSubmit==0)){
-		
-		
-		$("#location_button").show();
-		$("#sub_button_div").hide();
-
-		$("#image_up_button").hide();
-		$("#NOutlet_button").hide();
-		
-		
-		
-		$("#lat").val(0);
-		$("#long").val(0);
-		
-	}
-
-	if ((localStorage.latlongSubmit==1) && (localStorage.dataSubmit==0) && ((localStorage.fddataSubmit==0) || (localStorage.qpdsdataSubmit==0) || (localStorage.npddataSubmit==0) || (localStorage.giftdataSubmit==0) || (localStorage.placedataSubmit==0) || (localStorage.shopdataSubmit==0))){
-		$("#location_button").hide();
-		$("#sub_button_div").show();
-
-		$("#image_up_button").hide();
-		$("#NOutlet_button").hide();
-		
-	
-	}
-	if ((localStorage.latlongSubmit==1) && (localStorage.dataSubmit==1) && ((localStorage.fddataSubmit==0) || (localStorage.qpdsdataSubmit==0) || (localStorage.npddataSubmit==0) || (localStorage.giftdataSubmit==0) || (localStorage.placedataSubmit==0) || (localStorage.shopdataSubmit==0))){
-		$("#location_button").hide();
-		$("#sub_button_div").hide();
-
-		$("#image_up_button").show();
-		$("#NOutlet_button").hide();
-		
-	
-	}
-	if ((localStorage.latlongSubmit==1) && (localStorage.dataSubmit==1) && (localStorage.fddataSubmit==1) && (localStorage.qpdsdataSubmit==1) && (localStorage.npddataSubmit==1) && (localStorage.giftdataSubmit==1) && (localStorage.placedataSubmit==1) && (localStorage.shopdataSubmit==1)){
-		$("#location_button").hide();
-		$("#sub_button_div").hide();
-
-		$("#image_up_button").hide();
-		$("#NOutlet_button").show();
-	
-	}
+	//}
+//	if ((localStorage.latlongSubmit==0) & (localStorage.dataSubmit==0)){
+//		
+//		
+//		$("#location_button").show();
+		//$("#sub_button_div").hide();
+//
+//		$("#image_up_button").hide();
+//		$("#NOutlet_button").hide();
+//		
+//		
+//		
+//		$("#lat").val(0);
+//		$("#long").val(0);
+//		
+//	}
+//
+//	if ((localStorage.latlongSubmit==1) && (localStorage.dataSubmit==0) && ((localStorage.fddataSubmit==0) || (localStorage.qpdsdataSubmit==0) || (localStorage.npddataSubmit==0) || (localStorage.giftdataSubmit==0) || (localStorage.placedataSubmit==0) || (localStorage.shopdataSubmit==0))){
+//		$("#location_button").hide();
+//		$("#sub_button_div").show();
+//
+//		$("#image_up_button").hide();
+//		$("#NOutlet_button").hide();
+//		
+//	
+//	}
+//	if ((localStorage.latlongSubmit==1) && (localStorage.dataSubmit==1) && ((localStorage.fddataSubmit==0) || (localStorage.qpdsdataSubmit==0) || (localStorage.npddataSubmit==0) || (localStorage.giftdataSubmit==0) || (localStorage.placedataSubmit==0) || (localStorage.shopdataSubmit==0))){
+//		$("#location_button").hide();
+//		$("#sub_button_div").hide();
+//
+//		$("#image_up_button").show();
+//		$("#NOutlet_button").hide();
+//		
+//	
+//	}
+//	if ((localStorage.latlongSubmit==1) && (localStorage.dataSubmit==1) && (localStorage.fddataSubmit==1) && (localStorage.qpdsdataSubmit==1) && (localStorage.npddataSubmit==1) && (localStorage.giftdataSubmit==1) && (localStorage.placedataSubmit==1) && (localStorage.shopdataSubmit==1)){
+//		$("#location_button").hide();
+//		$("#sub_button_div").hide();
+//
+//		$("#image_up_button").hide();
+//		$("#NOutlet_button").show();
+//	
+//	}
 	
 
 }
